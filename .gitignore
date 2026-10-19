@@ -1,0 +1,29 @@
+# ======================================================================
+# DUTA RAB S1 : GITIGNORE FOR GITHUB PAGES DEPLOYMENT
+# Duta Digital Agensi (dutamik.id) - Sukoharjo, Jawa Tengah
+# ======================================================================
+
+# 1. Folder Arsip Backup Versi Internal (Ukuran besar >500MB, cadangan internal)
+versions/
+
+# 2. Folder & Berkas Script Internal Pengembang / Generator
+scratch/
+edge_profile_*
+snap_*.png
+crop_*.png
+*.py
+__pycache__/
+*.pyc
+
+# 3. Berkas Kunci Rahasia & Lingkungan Sensitif
+.env
+.env.*
+*.key
+*.pem
+*.secret
+
+# 4. Berkas Temporary, Pengujian & Log
+test_page.pdf
+*.log
+.DS_Store
+Thumbs.db

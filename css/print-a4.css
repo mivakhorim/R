@@ -1,0 +1,1392 @@
+@media print {
+  @page {
+    size: A4 portrait;
+    margin-top: 10mm;
+    margin-bottom: 14mm;
+    margin-left: 10mm;
+    margin-right: 10mm;
+    @top-left { content: none !important; }
+    @top-center { content: none !important; }
+    @top-right { content: none !important; }
+    @bottom-left {
+      content: "Dokumen Resmi Proyek • Standar SE PUPR No. 47/2026";
+      font-size: 8pt;
+      color: #64748b;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    @bottom-center { content: none !important; }
+    @bottom-right {
+      content: "Halaman " counter(page) " dari " counter(pages);
+      font-size: 8pt;
+      font-weight: 700;
+      color: #334155;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+  }
+
+  @page coverPage {
+    size: A4 portrait;
+    margin-top: 1.0cm !important;
+    margin-right: 1.0cm !important;
+    margin-bottom: 1.0cm !important;
+    margin-left: 2.0cm !important;
+    margin: 1.0cm 1.0cm 1.0cm 2.0cm !important;
+    @top-left { content: none !important; }
+    @top-center { content: none !important; }
+    @top-right { content: none !important; }
+    @bottom-left { content: none !important; }
+    @bottom-center { content: none !important; }
+    @bottom-right { content: none !important; }
+  }
+
+  @page proposalPage {
+    size: A4 portrait;
+    margin-top: 1.0cm !important;
+    margin-right: 1.0cm !important;
+    margin-bottom: 1.0cm !important;
+    margin-left: 2.0cm !important;
+    margin: 1.0cm 1.0cm 1.0cm 2.0cm !important;
+    @top-left { content: none !important; }
+    @top-center { content: none !important; }
+    @top-right { content: none !important; }
+    @bottom-left { content: none !important; }
+    @bottom-center { content: none !important; }
+    @bottom-right { content: none !important; }
+  }
+
+  @page bapPage {
+    size: A4 portrait;
+    margin-top: 10mm;
+    margin-bottom: 10mm;
+    margin-left: 12mm;
+    margin-right: 12mm;
+    @top-left { content: none !important; }
+    @top-right { content: none !important; }
+    @bottom-left { content: none !important; }
+    @bottom-center { content: none !important; }
+    @bottom-right { content: none !important; }
+  }
+
+  @page landscapePage {
+    size: A4 landscape;
+    margin-top: 10mm;
+    margin-bottom: 12mm;
+    margin-left: 12mm;
+    margin-right: 12mm;
+    @top-left { content: none !important; }
+    @top-center { content: none !important; }
+    @top-right { content: none !important; }
+    @bottom-left {
+      content: "Dokumen Resmi Proyek • Standar SE PUPR No. 47/2026";
+      font-size: 8pt;
+      color: #64748b;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    @bottom-center { content: none !important; }
+    @bottom-right {
+      content: "Halaman " counter(page) " dari " counter(pages);
+      font-size: 8pt;
+      font-weight: 700;
+      color: #334155;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+  }
+
+  @page bapPage {
+    size: A4 portrait;
+    margin-top: 20mm !important;
+    margin-bottom: 15mm !important;
+    margin-left: 12mm !important;
+    margin-right: 12mm !important;
+    @top-left { content: none !important; }
+    @top-right { content: none !important; }
+    @bottom-left { content: none !important; }
+    @bottom-center { content: none !important; }
+    @bottom-right { content: none !important; }
+  }
+
+  .app-sidebar,
+  .app-topbar,
+  .topbar-actions,
+  .page-header-actions,
+  .btn,
+  .btn-group,
+  .filter-bar,
+  .modal-backdrop,
+  .modal,
+  .modal-dialog,
+  .global-loader-backdrop,
+  #globalLoader,
+  .global-loader-card,
+  .spinner,
+  .signatory-toolbar,
+  .signatory-empty-state,
+  .proposal-signatory-subcard,
+  .no-print,
+  .d-mobile-only {
+    display: none !important;
+  }
+
+  .d-desktop-only {
+    display: block !important;
+  }
+  table.d-desktop-only {
+    display: table !important;
+  }
+  .table-responsive.d-desktop-only {
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  html, body, .app-layout, .app-main, .app-content {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+  }
+
+  .app-layout, .app-main, .app-content {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .card {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .card-header {
+    display: none !important;
+  }
+
+  .card-body {
+    padding: 0 !important;
+  }
+
+  .rupiah-nowrap, .currency {
+    white-space: nowrap !important;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .table-responsive {
+    overflow: visible !important;
+    margin-bottom: 12pt !important;
+  }
+
+  .table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 8.5pt !important;
+    page-break-inside: auto !important;
+  }
+
+  .table th {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 4.5pt 5pt !important;
+    font-size: 8pt !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    word-break: normal !important;
+    word-wrap: normal !important;
+    hyphens: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .table tr.division-header-row,
+  tr.division-header-row {
+    display: table-row !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .table tr.division-header-row th,
+  tr.division-header-row th.division-title-cell,
+  th.division-title-cell {
+    display: table-cell !important;
+    width: 100% !important;
+    text-align: left !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid #0f172a !important;
+    padding: 8pt 2pt 4pt 2pt !important;
+    font-size: 10pt !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    white-space: normal !important;
+  }
+
+  .table th.text-left {
+    text-align: left !important;
+  }
+
+  .table th.th-nowrap,
+  .table td.td-nowrap,
+  .th-nowrap,
+  .nowrap {
+    white-space: nowrap !important;
+  }
+
+  .table td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 4pt 6pt !important;
+    color: #0f172a !important;
+  }
+
+  .table tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+
+  .table-active {
+    background-color: #f8fafc !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .total-highlight-row {
+    background-color: #f1f5f9 !important;
+    font-weight: 700 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .scurve-svg, .svg-print-container svg {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-only {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    margin-bottom: 12pt !important;
+  }
+
+  tr.print-only {
+    display: table-row !important;
+    margin-bottom: 0 !important;
+  }
+
+  .print-header-block {
+    display: block !important;
+    margin-bottom: 14pt;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 8pt;
+  }
+
+  .print-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .company-brand {
+    font-size: 11pt;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .company-sub {
+    display: block;
+    font-size: 7.5pt;
+    color: #475569;
+  }
+
+  .print-header-meta {
+    font-size: 8pt;
+    text-align: right;
+    color: #334155;
+  }
+
+  .print-header-project-bar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    margin-top: 5pt;
+    color: #1e293b;
+  }
+
+  .signature-clean-grid,
+  .signature-clean-grid.three-parties {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    margin-top: 24pt !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    gap: 16pt !important;
+  }
+
+  .signature-clean-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: none !important;
+    background: transparent !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .signature-clean-table td {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 8px !important;
+  }
+
+  .signature-clean-grid.three-parties .sig-block {
+    flex: 1;
+    text-align: center;
+  }
+
+  .sig-block {
+    flex: 1;
+    text-align: center;
+  }
+
+  .sig-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 45pt; 
+  }
+
+  .sig-name {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: none !important;
+    text-decoration: none !important;
+    display: block;
+    padding-bottom: 2pt;
+    min-width: unset !important;
+  }
+
+  .sig-role {
+    font-size: 8pt;
+    color: #475569;
+    margin-top: 2pt;
+  }
+
+  .paraf-stamp {
+    display: inline-block;
+    border: 1px dashed #475569;
+    padding: 2pt 6pt;
+    font-weight: 700;
+    font-size: 8pt;
+    border-radius: 2pt;
+  }
+
+  .paraf-line {
+    display: inline-block;
+    width: 35pt;
+    border-bottom: 1px solid #64748b;
+    height: 12pt;
+  }
+
+  .blank-lines-container {
+    margin-top: 6pt;
+  }
+
+  .blank-line {
+    border-bottom: 1px dotted #94a3b8;
+    height: 16pt;
+  }
+
+  .proposal-page {
+    page: proposalPage !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    break-after: page !important;
+    break-inside: avoid !important;
+    box-sizing: border-box !important;
+    width: 180mm !important;
+    max-width: 180mm !important;
+    height: 277mm !important;
+    min-height: 277mm !important;
+    max-height: 277mm !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+  }
+
+  .proposal-page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .proposal-page .table,
+  .proposal-page table {
+    margin-bottom: 4px !important;
+    border-collapse: collapse !important;
+  }
+  .proposal-page .table th,
+  .proposal-page table th {
+    padding: 2.5pt 4pt !important;
+    font-size: 7.2pt !important;
+    line-height: 1.2 !important;
+  }
+  .proposal-page .table td,
+  .proposal-page table td {
+    padding: 2.5pt 4pt !important;
+    font-size: 7.2pt !important;
+    line-height: 1.25 !important;
+  }
+  .proposal-page .division-title-bar {
+    padding: 2.5pt 6pt !important;
+    font-size: 7.5pt !important;
+    margin-bottom: 2px !important;
+  }
+  .proposal-page .division-block {
+    margin-bottom: 4px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .cover-page,
+  .proposal-page.cover-page {
+    page: coverPage !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    break-after: page !important;
+    break-inside: avoid !important;
+    width: 180mm !important;
+    max-width: 180mm !important;
+    height: 277mm !important;
+    min-height: 277mm !important;
+    max-height: 277mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: stretch !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    overflow: hidden !important;
+  }
+
+  .printable-bap-doc {
+    page: bapPage !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    min-height: 255mm !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  #panel-kurva-s,
+  #panel-kalender,
+  .landscape-page,
+  .single-sheet-print {
+    page: landscapePage !important;
+  }
+
+  .proposal-preview-wrapper {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  .proposal-page.content-page:first-of-type {
+    counter-reset: page 1;
+  }
+
+  .cover-inner-border {
+    width: 100% !important;
+    height: 277mm !important;
+    min-height: 277mm !important;
+    max-height: 277mm !important;
+    box-sizing: border-box !important;
+    border: 2px solid #0a2e5c !important;
+    border-top: 2px solid #0a2e5c !important;
+    border-right: 2px solid #0a2e5c !important;
+    border-bottom: 2px solid #0a2e5c !important;
+    border-left: 2px solid #0a2e5c !important;
+    outline: none !important;
+    padding: 10mm 10mm 8mm 10mm !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background: #ffffff !important;
+    position: relative !important;
+  }
+
+  .cover-section-top {
+    flex-shrink: 0;
+  }
+
+  .cover-section-mid {
+    flex-shrink: 0;
+    margin: auto 0;
+  }
+
+  .cover-section-bot {
+    flex-shrink: 0;
+  }
+
+  .cover-header-top {
+    text-align: center;
+    margin-top: 10mm !important;
+  }
+
+  .cover-doc-classification {
+    font-size: 8pt;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #0a2e5c;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .cover-doc-standard {
+    font-size: 6.8pt;
+    color: #64748b;
+    margin-top: 3px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+
+  .cover-emblem-wrap {
+    text-align: center;
+    margin: 10px 0 6px 0;
+  }
+
+  .cover-title-block {
+    text-align: center;
+    margin: 6px 0;
+  }
+
+  .cover-main-title {
+    font-size: 15pt;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    text-align: center;
+  }
+
+  .cover-title-divider {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+  }
+
+  .cover-project-info {
+    margin-top: 4px;
+    text-align: center;
+  }
+
+  .cover-project-label {
+    font-size: 7pt;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .cover-project-name {
+    font-size: 13pt;
+    font-weight: 900;
+    color: #0a2e5c;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .cover-project-location {
+    font-size: 8pt;
+    color: #475569;
+    margin-top: 3px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .cover-stakeholder-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    box-sizing: border-box;
+  }
+
+  .cover-stakeholder-table td {
+    border: 1px solid #cbd5e1;
+    background-color: #fafbfc;
+    padding: 8px 12px;
+    vertical-align: top;
+    box-sizing: border-box;
+  }
+
+  .stakeholder-lbl {
+    font-size: 6.8pt;
+    font-weight: 800;
+    color: #64748b;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .stakeholder-val {
+    font-size: 8.8pt;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+  }
+
+  .stakeholder-sub {
+    font-size: 7.2pt;
+    color: #475569;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  .cover-total-band {
+    background-color: #0a2e5c !important;
+    border: 1px solid #0a2e5c;
+    padding: 9px 14px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 8px 0;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .cover-footer-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 6px;
+    font-size: 7.2pt;
+    color: #64748b;
+    font-weight: 600;
+  }
+
+  .page-heading h2 {
+    font-size: 12pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8pt;
+    border: none !important;
+    border-bottom: none !important;
+    text-decoration: none !important;
+  }
+
+  .page-heading {
+    border: none !important;
+    border-bottom: none !important;
+  }
+
+  .heading-line {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+  }
+
+  .division-section-row td {
+    background-color: #f1f5f9 !important;
+    color: #0a2e5c !important;
+    font-weight: 700 !important;
+    border-top: 1.5px solid #cbd5e1 !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .terbilang-clean {
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .toc-list {
+    margin: 15pt 0;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    font-size: 9pt;
+    margin-bottom: 8pt;
+  }
+
+  .toc-title {
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  .toc-dots {
+    flex-grow: 1;
+    border-bottom: 1px dotted #94a3b8;
+    margin: 0 6pt;
+  }
+
+  .toc-page {
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  body.printing-batch .app-layout {
+    display: none !important;
+  }
+  body.printing-batch #printableAhspBatchArea {
+    display: block !important;
+    width: 100% !important;
+  }
+  #printableAhspBatchArea {
+    display: none !important;
+  }
+
+  .proposal-page .print-footer-block {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    max-height: none !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    font-size: 8pt !important;
+    color: #475569 !important;
+    border-top: none !important;
+    padding-top: 4px !important;
+    margin-top: auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cover-page .print-footer-block,
+  .printable-bap-doc .print-footer-block {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+  }
+}
+
+@media screen {
+  .proposal-page {
+    position: relative;
+    box-sizing: border-box;
+    width: 210mm;
+    max-width: 100%;
+    min-height: 297mm;
+    height: 297mm;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    margin: 0 auto 28px auto;
+    padding: 1.0cm 1.0cm 1.0cm 2.0cm !important;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+    border-radius: 4px;
+    overflow: hidden !important;
+  }
+
+  .proposal-page.cover-page {
+    padding: 1.0cm 1.0cm 1.0cm 2.0cm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .proposal-page.cover-page .cover-inner-border {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 277mm !important;
+    max-height: 277mm !important;
+    box-sizing: border-box !important;
+    border: 2px solid #0a2e5c !important;
+    border-top: 2px solid #0a2e5c !important;
+    border-right: 2px solid #0a2e5c !important;
+    border-bottom: 2px solid #0a2e5c !important;
+    border-left: 2px solid #0a2e5c !important;
+    outline: none !important;
+    padding: 10mm 10mm 8mm 10mm !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background: #ffffff !important;
+  }
+
+  .proposal-page .print-footer-block {
+    display: flex !important;
+    visibility: visible !important;
+    border-top: none !important;
+    justify-content: space-between;
+    font-size: 8pt;
+    color: #475569;
+    padding-top: 6px;
+    margin-top: auto !important;
+    width: 100%;
+    flex-shrink: 0 !important;
+  }
+
+  .cover-page .print-footer-block,
+  .printable-bap-doc .print-footer-block {
+    display: none !important;
+  }
+}
+
+.cover-header-top {
+  text-align: center;
+  margin-top: 10mm !important;
+}
+
+.page-heading h2 {
+  border: none !important;
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
+.page-heading {
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.heading-line {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: none !important;
+  margin: 0 !important;
+}
+
+.cover-title-divider {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: none !important;
+  margin: 0 !important;
+}
+
+.cover-stakeholder-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  border: 1px solid #cbd5e1;
+}
+
+.cover-stakeholder-table td {
+  border: 1px solid #cbd5e1;
+  background-color: #fafbfc;
+  padding: 8px 12px;
+  vertical-align: top;
+}
+
+.stakeholder-lbl {
+  font-size: 6.8pt;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.stakeholder-val {
+  font-size: 8.8pt;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.stakeholder-sub {
+  font-size: 7.2pt;
+  color: #475569;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.cover-total-band {
+  background-color: #0a2e5c !important;
+  border: 1px solid #0a2e5c;
+  padding: 9px 14px;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 8px 0;
+  color: #ffffff !important;
+}
+
+.cover-footer-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #cbd5e1;
+  padding-top: 6px;
+  font-size: 7.2pt;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.division-section-row td {
+  background-color: #f1f5f9 !important;
+  color: #0a2e5c !important;
+  font-weight: 700 !important;
+  border-top: 1.5px solid #cbd5e1 !important;
+  border-bottom: 1px solid #cbd5e1 !important;
+}
+
+.terbilang-clean {
+  border: none !important;
+  background: transparent !important;
+}
+
+.division-block {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.item-labor-box {
+  background: #f8fafc !important;
+  border: 0.5pt solid #cbd5e1 !important;
+  border-radius: 3pt !important;
+  padding: 3pt 5pt !important;
+  margin-top: 3pt !important;
+  font-size: 7.5pt !important;
+  page-break-inside: avoid !important;
+}
+.item-labor-box strong {
+  color: #0f172a !important;
+}
+
+@media print {
+  .print-header-block {
+    display: block !important;
+    visibility: visible !important;
+    margin-bottom: 14pt !important;
+    border-bottom: 2.5pt double #0f172a !important;
+    padding-bottom: 10pt !important;
+  }
+  .print-header-top {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+  }
+  .company-brand {
+    font-size: 13pt !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+  }
+  .company-sub {
+    display: block !important;
+    font-size: 8pt !important;
+    color: #475569 !important;
+    margin-top: 2pt !important;
+  }
+  .print-header-meta {
+    font-size: 8pt !important;
+    text-align: right !important;
+    color: #334155 !important;
+    line-height: 1.4 !important;
+  }
+  .print-doc-title-box {
+    text-align: center !important;
+    margin: 8pt 0 10pt 0 !important;
+    padding: 6pt 0 !important;
+    border-top: 1pt solid #cbd5e1 !important;
+    border-bottom: 1pt solid #cbd5e1 !important;
+  }
+  .print-doc-title {
+    font-size: 12pt !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+  }
+  .print-doc-subtitle {
+    font-size: 8pt !important;
+    color: #475569 !important;
+    margin-top: 2pt !important;
+  }
+  .print-header-project-table {
+    width: 100% !important;
+    margin-top: 6pt !important;
+    font-size: 8pt !important;
+    border-collapse: collapse !important;
+  }
+  .print-header-project-table td {
+    padding: 2.5pt 5pt !important;
+    vertical-align: top !important;
+    border: none !important;
+  }
+
+  .proposal-footer {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .printable-bap-doc {
+    page-break-before: auto !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 4px !important;
+    overflow: visible !important;
+    position: relative !important;
+    background: #ffffff !important;
+  }
+
+  .printable-bap-doc:last-child {
+    page-break-after: auto !important;
+  }
+
+  .bap-card-item {
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+  }
+
+  .bap-card-item:last-child {
+    page-break-after: auto !important;
+  }
+
+  .executive-summary-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8pt !important;
+    margin-bottom: 12pt !important;
+    page-break-inside: avoid !important;
+  }
+  .letter-meta-box {
+    display: flex !important;
+    justify-content: space-between !important;
+    font-size: 8pt !important;
+    border-bottom: 1.5pt solid #cbd5e1 !important;
+    padding-bottom: 6pt !important;
+    margin-bottom: 10pt !important;
+  }
+}
+
+.print-footer-block {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8pt;
+  color: #475569;
+  border-top: none;
+  padding-top: 4px;
+  margin-top: 12px;
+  width: 100%;
+  page-break-inside: avoid;
+  box-sizing: border-box;
+}
+.print-footer-block .footer-left {
+  color: #64748b;
+  font-weight: 500;
+  font-size: 8pt;
+}
+.print-footer-block .footer-right {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 8pt;
+}
+
+.proposal-page {
+  position: relative;
+  overflow: visible;
+}
+.printable-bap-doc {
+  position: relative;
+  overflow: visible;
+}
+
+.division-header-row {
+  display: none;
+}
+
+@media print {
+  .vol-input-clean {
+    border: none !important;
+    background: transparent !important;
+    text-align: right !important;
+    font-size: 8.5pt !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    width: 100% !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  
+  .ahsp-print-card,
+  .print-card,
+  .card,
+  .tab-panel,
+  .table-responsive,
+  .svg-print-container,
+  #panel-kurva-s,
+  #panel-kalender,
+  #panel-sumberdaya,
+  #panel-detail-rab,
+  #panel-volume,
+  #panel-rekap-rab,
+  #panel-bap {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  .table td .badge,
+  .table td .task-active-line {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 1px 0 !important;
+    margin: 0 !important;
+    font-weight: 500 !important;
+    color: #1e293b !important;
+    display: block !important;
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  .ahsp-print-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 16px !important;
+    padding: 0 0 10px 0 !important;
+  }
+
+  .printable-bap-doc {
+    page: bapPage !important;
+    width: 186mm !important;
+    max-width: 186mm !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  #panel-kurva-s .svg-print-container svg {
+    max-height: 105mm !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+  .kurva-s-table-wrapper {
+    page-break-before: always !important;
+    break-before: page !important;
+    margin-top: 16px !important;
+  }
+
+  .year-calendar-grid {
+    display: block !important;
+  }
+  .cal-print-page {
+    display: grid !important;
+    gap: 12px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    margin-bottom: 0 !important;
+  }
+  .cal-print-page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+  .cal-print-grid-1 {
+    grid-template-columns: 1fr !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
+  }
+  .cal-print-grid-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .cal-print-grid-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .year-cal-indicator,
+  .cal-dot-svg {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .year-cal-sunday-work,
+  .cal-cell.cal-sunday-work {
+    background-color: #f0fdf4 !important;
+    border-color: #86efac !important;
+    color: #166534 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .year-cal-holiday,
+  .cal-cell.cal-holiday {
+    background-color: #fff1f2 !important;
+    border-color: #fecdd3 !important;
+    color: #e11d48 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .printable-calendar-matrix {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+  .printable-calendar-tasks {
+    page-break-before: always !important;
+    break-before: page !important;
+    margin-top: 0 !important;
+  }
+  .calendar-legend-bar {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  .year-month-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .ahsp-print-card strong,
+  .ahsp-print-card span[style*="white-space: nowrap"],
+  .ahsp-print-card td:nth-child(4),
+  .ahsp-print-card td:nth-child(5),
+  .ahsp-print-card td:nth-child(6) {
+    white-space: nowrap !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+  .ahsp-print-card div[style*="min-width: 220px"] {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    min-width: 220px !important;
+  }
+}
+
+.cal-print-page {
+  display: contents;
+}
+
+.calendar-division-header-row td {
+  background-color: #f1f5f9 !important;
+}
+.calendar-div-inner-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border: none !important;
+  background: transparent !important;
+}
+.calendar-div-inner-table td {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+
+@media print {
+  .subheading {
+    margin-top: 22pt !important;
+    margin-bottom: 8pt !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+  .proposal-page table {
+    margin-bottom: 22pt !important;
+  }
+  .proposal-page .subheading:first-of-type {
+    margin-top: 10pt !important;
+  }
+  .proposal-page h2,
+  .proposal-page h3,
+  .proposal-page h4,
+  .proposal-page p,
+  .printable-bap-doc p {
+    border-left: none !important;
+  }
+  .proposal-page .cover-inner-border,
+  .proposal-page.cover-page .cover-inner-border,
+  .cover-inner-border {
+    border: 2px solid #0a2e5c !important;
+    border-top: 2px solid #0a2e5c !important;
+    border-right: 2px solid #0a2e5c !important;
+    border-bottom: 2px solid #0a2e5c !important;
+    border-left: 2px solid #0a2e5c !important;
+    outline: none !important;
+  }
+  .proposal-info-table,
+  .proposal-info-clean-table {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .proposal-info-table td,
+  .proposal-info-clean-table td {
+    background: transparent !important;
+  }
+}

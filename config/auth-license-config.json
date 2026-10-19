@@ -1,0 +1,68 @@
+{
+  "application": "Duta RAB S1",
+  "version": "1.14",
+  "developer": {
+    "agency": "Duta Digital Agensi",
+    "website": "dutamik.id",
+    "tagline": "Duta Media Informasi berKarya",
+    "location": "Sukoharjo, Jawa Tengah",
+    "contactWhatsapp": "6283130300094"
+  },
+  "supabase": {
+    "url": "",
+    "anonKey": "sb_publishable_941YvnmV_Uz2bC1pGD5cIg_zU9MrISg",
+    "tableProfiles": "user_profiles",
+    "tableOrders": "billing_orders"
+  },
+  "googleAuth": {
+    "clientId": "",
+    "scope": "openid email profile https://www.googleapis.com/auth/drive.file"
+  },
+  "roles": {
+    "admin": {
+      "label": "Administrator Lisensi",
+      "canManageMembers": true,
+      "canGenerateLicense": true,
+      "canExportAll": true,
+      "canCustomAhsp": true,
+      "canBapTermin": true,
+      "maxProjects": 9999
+    },
+    "estimator_pro": {
+      "label": "Estimator Profesional",
+      "canManageMembers": false,
+      "canGenerateLicense": false,
+      "canExportAll": true,
+      "canCustomAhsp": true,
+      "canBapTermin": true,
+      "maxProjects": 9999
+    },
+    "client_viewer": {
+      "label": "Klien / Pemilik Tugas",
+      "canManageMembers": false,
+      "canGenerateLicense": false,
+      "canExportAll": false,
+      "canCustomAhsp": false,
+      "canBapTermin": false,
+      "maxProjects": 5
+    },
+    "free_trial": {
+      "label": "Uji Coba Gratis",
+      "canManageMembers": false,
+      "canGenerateLicense": false,
+      "canExportAll": true,
+      "canCustomAhsp": false,
+      "canBapTermin": true,
+      "maxProjects": 2
+    }
+  },
+  "cloudSync": {
+    "googleDrive": {
+      "enabled": true,
+      "folderName": "Duta RAB S1",
+      "scope": "https://www.googleapis.com/auth/drive.file",
+      "databaseFileName": "duta_rab_database.json",
+      "autoSync": true
+    }
+  }
+}

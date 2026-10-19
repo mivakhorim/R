@@ -1,0 +1,42 @@
+# Duta RAB S1 - Analisa Harga Satuan Pekerjaan (AHSP) & Estimasi Biaya Konstruksi
+> Pedoman Resmi Standar Surat Edaran Dirjen Bina Konstruksi No. 47/SE/Dk/2026.
+> Pengembang: Duta Digital Agensi (dutamik.id) - Sukoharjo, Jawa Tengah.
+
+## Ringkasan Eksekutif
+Duta RAB S1 (https://rab.dutamik.id/) adalah platform web resmi untuk perhitungan Rencana Anggaran Biaya (RAB) dan katalog Analisa Harga Satuan Pekerjaan (AHSP) konstruksi terlengkap di Indonesia. Menyajikan 2.579 item koefisien analisa resmi standar SE Dirjen Bina Konstruksi No. 47/SE/Dk/2026 yang terbagi dalam bidang Cipta Karya, Sumber Daya Air (SDA), dan Bina Marga.
+
+## Struktur URL Utama
+- Aplikasi RAB Interaktif: https://rab.dutamik.id/
+- Katalog Indeks AHSP SNI: https://rab.dutamik.id/ahsp/
+- Rincian AHSP Spesifik: https://rab.dutamik.id/ahsp/{KODE}.html
+- Disclaimer & Sumber Rujukan: https://rab.dutamik.id/disclaimer.html
+- Kebijakan Privasi: https://rab.dutamik.id/privacy.html
+- Syarat & Ketentuan: https://rab.dutamik.id/terms.html
+- Pusat Bantuan & Kontak: https://rab.dutamik.id/kontak.html
+
+## Landasan Regulasi & Otoritas
+1. Surat Edaran Direktur Jenderal Bina Konstruksi Kementerian PUPR No. 47/SE/Dk/2026 tentang Pedoman Analisis Harga Satuan Pekerjaan Bidang Pekerjaan Umum.
+2. Standar Nasional Indonesia (SNI) bidang Pekerjaan Gedung, Sanitasi, Air Bersih, Irigasi, Bendungan, Jalan, dan Jembatan.
+
+## Bidang Analisa Tersedia
+- Cipta Karya: Pekerjaan Gedung, Arsitektur, Struktur, Mekanikal & Elektrikal, Sanitasi, Tata Lingkungan (2.531 item).
+- Sumber Daya Air (SDA): Irigasi, Bendungan, Saluran Primer/Sekunder, Pintu Air, Tanggul, Normalisasi Sungai (10 item).
+- Bina Marga: Pekerjaan Tanah, Perkerasan Berbutir, Aspal, Struktur Beton Jembatan, Drainase Jalan (21 item).
+- Sistem Manajemen Keselamatan Konstruksi (SMKK): Standar keselamatan dan mitigasi risiko kerja (17 item).
+
+## Format Data Rincian Tiap AHSP
+Setiap halaman rincian AHSP menyajikan:
+- Kode AHSP Standar Nasional (contoh: 1.1.1.1, A.2.2.1.1)
+- Uraian Kegiatan Pekerjaan Lengkap
+- Satuan Pengukuran Resmi (m3, m2, m', kg, titik, unit, ls)
+- Rincian Komponen Koefisien Standar: Tenaga Kerja (OH), Bahan Material, Peralatan (Sewa-hari / Jam)
+- Rumus Kalkulasi: Total = Koefisien * Volume * Harga Satuan Dasar
+- Simulator Hitung Volume Riil Interaktif
+- Skema Terstruktur JSON-LD Schema.org (Product, HowTo, FAQPage, BreadcrumbList)
+
+## Kontak & Koreksi Data
+Saran dan usulan perbaikan koefisien dapat diajukan kepada:
+- Pengembang: Duta Digital Agensi
+- Situs Resmi: https://dutamik.id/
+- WhatsApp: +62 831-3030-0094
+- Alamat: Bulusan RT 01 RW 08 Mandan, Sukoharjo, Jawa Tengah
