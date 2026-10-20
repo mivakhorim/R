@@ -965,20 +965,20 @@ a:hover { color: var(--color-primary-hover); text-decoration: underline; }
 
       <h2 class="article-h2">1. Penyimpanan Data Lokal &amp; Jaminan Privasi Proyek</h2>
       <p class="article-p">
-        Perangkat lunak ini dirancang dengan prinsip pemrosesan pada sisi peramban (client-side first). Seluruh rincian penghitungan Rencana Anggaran Biaya (RAB), penyesuaian koefisien bahan lokal, kalender kerja, kurva S, serta berkas penagihan termin disimpan secara aman pada memori penyimpanan lokal perangkat Anda (browser LocalStorage / IndexedDB) atau folder kerja yang Anda pilih.
+        Perangkat lunak ini dirancang dengan prinsip pemrosesan pada sisi peramban (client-side first). Seluruh rincian penghitungan Rencana Anggaran Biaya (RAB), penyesuaian koefisien bahan lokal, kalender kerja, kurva S, serta berkas penagihan termin disimpan secara aman pada memori penyimpanan lokal perangkat Anda (browser LocalStorage / IndexedDB / OPFS) atau folder kerja komputer lokal yang Anda pilih.
       </p>
       <p class="article-p">
-        Kami tidak mengunggah, merekam, memantau, atau menyalin lembar kerja proyek Anda ke peladen eksternal pengembang. Dengan demikian, dokumen rahasia perusahaan dan nilai penawaran lelang Anda terproteksi secara mandiri dari akses pihak luar.
+        Kami tidak mengunggah, merekam, memantau, atau menyalin lembar kerja proyek Anda ke peladen eksternal pengembang tanpa otorisasi Anda. Dengan demikian, dokumen rahasia perusahaan dan nilai penawaran lelang Anda terproteksi secara mandiri dari akses pihak luar.
       </p>
 
-      <h2 class="article-h2">2. Sistem Autentikasi Cloud &amp; Sinkronisasi Cadangan Mandiri</h2>
+      <h2 class="article-h2">2. Sistem Autentikasi Cloud &amp; Pencadangan Google Drive</h2>
       <p class="article-p">
-        Aplikasi menyediakan fasilitas opsional bagi pengguna yang ingin menyinkronkan atau mencadangkan berkas proyek ke media penyimpanan cloud drive pribadi miliknya sendiri. Pengoperasian fitur ini tunduk pada standar perlindungan data tingkat tinggi:
+        Aplikasi menyediakan fasilitas bagi pengguna yang ingin menyinkronkan atau mencadangkan berkas proyek ke media penyimpanan cloud Google Drive pribadi pengguna selain pada penyimpanan lokal di PC atau HP. Pencadangan Google Drive mengorganisasi data secara rapi ke dalam tiga folder utama: folder proyek (file kalkulasi RAB dan BAP), folder database (master harga bahan, upah, alat, dan koefisien kustom), serta folder cache (metadata sinkronisasi dan status sesi kolaborasi). Pengoperasian fitur ini tunduk pada standar perlindungan data tingkat tinggi:
       </p>
       <ul class="article-list">
-        <li><strong>Akses Terbatas:</strong> Sistem hanya meminta otorisasi terbatas pada folder kerja yang dibentuk oleh aplikasi untuk menyimpan cadangan berkas proyek. Sistem tidak memiliki izin untuk membaca, menyalin, atau memodifikasi dokumen pribadi Anda lainnya.</li>
+        <li><strong>Akses Terbatas:</strong> Sistem hanya meminta otorisasi terbatas pada folder kerja yang dibentuk oleh aplikasi di Google Drive pengguna untuk menyimpan cadangan berkas proyek. Sistem tidak memiliki izin untuk membaca, menyalin, atau memodifikasi dokumen pribadi Anda lainnya di luar folder aplikasi.</li>
         <li><strong>Enkripsi Sesi:</strong> Kredensial sesi autentikasi dikelola langsung secara terenkripsi pada sisi peramban pengguna dan tidak pernah disimpan atau dibagikan ke basis data pihak ketiga.</li>
-        <li><strong>Kendali Penuh:</strong> Anda memiliki kebebasan penuh untuk memutuskan koneksi cloud kapan saja melalui menu pengaturan aplikasi.</li>
+        <li><strong>Kendali Penuh:</strong> Anda memiliki kebebasan penuh untuk memutuskan koneksi cloud kapan saja melalui menu pengaturan aplikasi atau menghapus cadangan dari drive pribadi Anda.</li>
       </ul>
 
       <h2 class="article-h2">3. Kebijakan Iklan &amp; Cookie Pihak Ketiga</h2>

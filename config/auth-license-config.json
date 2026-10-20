@@ -1,6 +1,6 @@
 {
   "application": "Duta RAB S1",
-  "version": "1.14",
+  "version": "1.15",
   "developer": {
     "agency": "Duta Digital Agensi",
     "website": "dutamik.id",
@@ -9,14 +9,15 @@
     "contactWhatsapp": "6283130300094"
   },
   "supabase": {
-    "url": "",
+    "url": "https://mpzwrfmpjccuadmywcip.supabase.co",
     "anonKey": "sb_publishable_941YvnmV_Uz2bC1pGD5cIg_zU9MrISg",
     "tableProfiles": "user_profiles",
-    "tableOrders": "billing_orders"
+    "tableOrders": "billing_orders",
+    "tableLocks": "collaboration_locks"
   },
   "googleAuth": {
     "clientId": "131768340355-l4rkohhb2kv11pbimgecoibptsvpha2l.apps.googleusercontent.com",
-    "scope": "openid email profile https://www.googleapis.com/auth/drive.file"
+    "scope": "openid email profile"
   },
   "roles": {
     "admin": {
@@ -29,7 +30,7 @@
       "maxProjects": 9999
     },
     "estimator_pro": {
-      "label": "Estimator Profesional",
+      "label": "Lisensi Berbayar",
       "canManageMembers": false,
       "canGenerateLicense": false,
       "canExportAll": true,
@@ -47,19 +48,21 @@
       "maxProjects": 5
     },
     "free_trial": {
-      "label": "Uji Coba Gratis",
+      "label": "Lisensi Gratis",
       "canManageMembers": false,
       "canGenerateLicense": false,
       "canExportAll": true,
       "canCustomAhsp": false,
       "canBapTermin": true,
-      "maxProjects": 2
+      "maxProjects": 2,
+      "timeLimitMinutes": 20
     }
   },
   "cloudSync": {
     "googleDrive": {
       "enabled": true,
-      "folderName": "Duta RAB S1",
+      "rootFolder": "Duta RAB S1",
+      "subFolders": ["proyek", "database", "cache"],
       "scope": "https://www.googleapis.com/auth/drive.file",
       "databaseFileName": "duta_rab_database.json",
       "autoSync": true

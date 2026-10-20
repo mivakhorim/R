@@ -75,34 +75,38 @@ a:hover { color: var(--color-primary-hover); text-decoration: underline; }
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 6px 11px;
-  background-color: rgba(255, 255, 255, 0.12);
+  padding: 6px 8px;
+  background-color: transparent !important;
   color: #ffffff !important;
   font-size: 12px;
   font-weight: 600;
   border-radius: var(--radius-sm);
-  transition: background-color 0.15s ease;
+  border: none !important;
+  box-shadow: none !important;
+  transition: opacity 0.15s ease;
   text-decoration: none !important;
   white-space: nowrap;
 }
-.btn-head-link:hover { background-color: rgba(255, 255, 255, 0.22); }
+.btn-head-link:hover { opacity: 0.8; background-color: transparent !important; }
 
 .btn-head-print {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 6px 11px;
-  background-color: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  padding: 6px 8px;
+  background-color: transparent !important;
+  color: #ffffff !important;
   font-size: 12px;
   font-weight: 600;
   border-radius: var(--radius-sm);
-  border: none;
+  border: none !important;
+  box-shadow: none !important;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: opacity 0.15s ease;
   white-space: nowrap;
 }
-.btn-head-print:hover { background-color: rgba(255, 255, 255, 0.22); }
+.btn-head-print:hover { opacity: 0.8; background-color: transparent !important; }
+.btn-head-print .btn-text { display: none !important; }
 
 .btn-head-app {
   display: inline-flex;
@@ -145,9 +149,21 @@ a:hover { color: var(--color-primary-hover); text-decoration: underline; }
 .breadcrumb-container a:hover { color: var(--color-primary); }
 
 .main-content {
+  width: min(85%, 1240px);
   max-width: 1240px;
   margin: 0 auto;
-  padding: 20px 16px 40px;
+  padding: 24px 20px 48px;
+}
+.adsense-card {
+  margin: 16px 0;
+  text-align: center;
+  min-height: 0;
+  border-radius: var(--radius-sm);
+}
+.adsense-card:has(ins[data-ad-status="unfilled"]),
+.adsense-card ins[data-ad-status="unfilled"],
+.adsense-card:empty {
+  display: none !important;
 }
 .card-rest {
   background-color: var(--color-surface);
