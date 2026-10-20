@@ -1,27 +1,32 @@
 -- ==============================================================================
 -- DUTA RAB S1 : SUPABASE QUICK FIX PATCH (EKSEKUSI DI SQL EDITOR SUPABASE)
--- Mengatasi:
--- 1. Izin DELETE user_profiles untuk role anon & authenticated
--- 2. Error 42883 function digest(text, unknown) pada admin_workspace_gateway
--- 3. Default gen_random_uuid() untuk kolom id user_profiles
+-- Pengembang: Duta Digital Agensi (dutamik.id) - Sukoharjo, Jawa Tengah
+-- Master Secret Passcode: Surabaya123
 -- ==============================================================================
 
--- 1. Pastikan ekstensi pgcrypto aktif
+-- 1. Ekstensi pgcrypto
 create extension if not exists pgcrypto with schema extensions;
 
--- 2. Tambahkan default UUID ke kolom id jika belum ada
+-- 2. Default UUID dan Unique Constraint pada Kolom Email (Mengatasi Error 42P10)
 alter table public.user_profiles alter column id set default gen_random_uuid();
 
--- 3. Kebijakan RLS DELETE & Izin Lengkap
+do $init$
+begin
+  if not exists (select 1 from pg_constraint where conname = 'user_profiles_email_key') then
+    alter table public.user_profiles add constraint user_profiles_email_key unique (email);
+  end if;
+end;
+$init$;
+
+-- 3. RLS dan Hak Akses Penuh Termasuk DELETE (Mengatasi Error Izin 42501)
 alter table public.user_profiles enable row level security;
 
 drop policy if exists "Users can delete profiles" on public.user_profiles;
-create policy "Users can delete profiles" on public.user_profiles
-  for delete using (true);
+create policy "Users can delete profiles" on public.user_profiles for delete using (true);
 
 grant select, insert, update, delete on public.user_profiles to anon, authenticated, service_role;
 
--- 4. Update RPC admin_workspace_gateway (Bebas Error 42883 Digest)
+-- 4. RPC admin_workspace_gateway (Bebas Error 42883 Digest & Bebas Error 42601 $)
 create or replace function public.admin_workspace_gateway(
   passcode text,
   action text,
@@ -31,7 +36,7 @@ returns jsonb
 language plpgsql
 security definer
 set search_path = public, extensions
-as $$
+as $body$
 declare
   is_valid_passcode boolean := false;
   v_tiers jsonb;
@@ -45,10 +50,8 @@ declare
   v_email text;
   v_name text;
   v_random_code integer;
-  v_domain text;
-  v_order_id text;
 begin
-  -- Verifikasi passcode: langsung cek string 'Surabaya123' atau hash SHA-256
+  -- Verifikasi passcode admin Surabaya123 langsung
   if passcode = 'Surabaya123' or passcode = '4d02994612948232fb18bb34df323a62a83e6bcd7e86d9df21ce1d55d86093eb' then
     is_valid_passcode := true;
   else
@@ -177,11 +180,11 @@ begin
     return jsonb_build_object('success', false, 'message', 'Aksi Tidak Dikenali');
   end if;
 end;
-$$;
+$body$;
 
 grant execute on function public.admin_workspace_gateway(text, text, jsonb) to anon, authenticated, service_role;
 
--- 5. Pastikan akun mivakhorim@gmail.com dan dutadigitalagensi@gmail.com sebagai Administrator Permanen
+-- 5. Seed Administrator Resmi (Aman dengan constraint unique pada email)
 insert into public.user_profiles (
   id, email, full_name, avatar_url, unique_code, role, plan_type, status, allowed_features
 ) values 
