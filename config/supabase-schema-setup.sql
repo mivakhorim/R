@@ -1,16 +1,12 @@
--- ==============================================================================
 -- DUTA RAB S1 : MASTER DATABASE SCHEMA & SECURITY DEFINER SETUP (SUPABASE)
 -- Standard SE Bina Konstruksi No. 47/2026
 -- Pengembang: Duta Digital Agensi (dutamik.id) - Sukoharjo, Jawa Tengah
 -- Master Secret Passcode: Surabaya123
 -- SHA256: 4d02994612948232fb18bb34df323a62a83e6bcd7e86d9df21ce1d55d86093eb
--- ==============================================================================
 
 create extension if not exists "pgcrypto";
 
--- ------------------------------------------------------------------------------
 -- 1. TABEL TIER LISENSI
--- ------------------------------------------------------------------------------
 create table if not exists public.member_tiers (
   tier_id text primary key,
   name text not null,
@@ -38,9 +34,7 @@ on conflict (tier_id) do update set
   can_bap_termin = excluded.can_bap_termin,
   can_export_all = excluded.can_export_all;
 
--- ------------------------------------------------------------------------------
 -- 2. TABEL PROFIL PENGGUNA (USER PROFILES) DENGAN KODE ACAK 3 DIGIT
--- ------------------------------------------------------------------------------
 create table if not exists public.user_profiles (
 
   id uuid primary key,
@@ -59,17 +53,17 @@ create table if not exists public.user_profiles (
 create unique index if not exists user_profiles_email_idx on public.user_profiles (lower(trim(email)));
 
 -- Pastikan kolom id default gen_random_uuid dan constraint unique pada email selalu ada
-do 
+do $init$
 begin
   alter table public.user_profiles alter column id set default gen_random_uuid();
   if not exists (select 1 from pg_constraint where conname = 'user_profiles_email_key') then
     alter table public.user_profiles add constraint user_profiles_email_key unique (email);
   end if;
-end ;
-
+end;
+$init$;
 
 -- Pastikan kolom unique_code ada jika tabel sudah pernah dibuat sebelumnya
-do $$
+do $setup$
 begin
   if not exists (select 1 from information_schema.columns where table_schema='public' and table_name='user_profiles' and column_name='unique_code') then
     alter table public.user_profiles add column unique_code integer default floor(random() * 900 + 100)::int;
@@ -80,11 +74,10 @@ begin
   if not exists (select 1 from information_schema.columns where table_schema='public' and table_name='user_profiles' and column_name='allowed_features') then
     alter table public.user_profiles add column allowed_features jsonb default '{"canExportAll": true, "canCustomAhsp": false, "canBapTermin": false}'::jsonb;
   end if;
-end $$;
+end;
+$setup$;
 
--- ------------------------------------------------------------------------------
 -- 3. TABEL KUNCI KOLABORASI REAL-TIME (GOOGLE SHEET STYLE LOCK)
--- ------------------------------------------------------------------------------
 create table if not exists public.collaboration_locks (
   project_id text primary key,
   project_name text,
@@ -98,9 +91,7 @@ create table if not exists public.collaboration_locks (
   updated_at timestamptz default now()
 );
 
--- ------------------------------------------------------------------------------
 -- 4. TABEL PESANAN & PEMBAYARAN (BILLING ORDERS)
--- ------------------------------------------------------------------------------
 create table if not exists public.billing_orders (
   id serial primary key,
   order_id text unique not null,
@@ -114,9 +105,7 @@ create table if not exists public.billing_orders (
   notes text
 );
 
--- ------------------------------------------------------------------------------
 -- 5. TABEL DOMAIN LOCK & MASTER SECRETS
--- ------------------------------------------------------------------------------
 create table if not exists public.app_domain_locks (
   id serial primary key,
   domain text unique not null,
@@ -147,15 +136,13 @@ values
 on conflict (secret_key) do update set
   secret_hash = excluded.secret_hash;
 
--- ------------------------------------------------------------------------------
 -- 6. TRIGGER OTOMATIS SAAT USER LOGIN / DAFTAR DENGAN GOOGLE
--- ------------------------------------------------------------------------------
 create or replace function public.handle_new_auth_user()
 returns trigger
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $func$
 declare
   v_random_code integer;
   v_user_name text;
@@ -210,7 +197,7 @@ begin
 
   return new;
 end;
-$$;
+$func$;
 
 drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
@@ -234,9 +221,7 @@ from auth.users u
 where not exists (select 1 from public.user_profiles p where p.id = u.id)
 on conflict (id) do nothing;
 
--- ------------------------------------------------------------------------------
 -- 7. SISTEM SINKRONISASI KOLABORASI REAL-TIME (GOOGLE SHEET LOCK)
--- ------------------------------------------------------------------------------
 create or replace function public.acquire_project_lock(
   p_project_id text,
   p_project_name text,
@@ -248,7 +233,7 @@ returns jsonb
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $func$
 declare
   v_lock record;
   v_now timestamptz := now();
@@ -298,7 +283,7 @@ begin
     'seconds_since_heartbeat', round(extract(epoch from (v_now - v_lock.last_heartbeat)))
   );
 end;
-$$;
+$func$;
 
 create or replace function public.release_project_lock(
   p_project_id text,
@@ -309,7 +294,7 @@ returns jsonb
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $func$
 declare
   v_lock record;
   v_now timestamptz := now();
@@ -334,7 +319,7 @@ begin
 
   return jsonb_build_object('success', false, 'message', 'Bukan pemilik lock saat ini');
 end;
-$$;
+$func$;
 
 create or replace function public.check_project_sync_state(
   p_project_id text,
@@ -344,7 +329,7 @@ returns jsonb
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $func$
 declare
   v_lock record;
   v_now timestamptz := now();
@@ -371,17 +356,15 @@ begin
     'updated_at', v_lock.updated_at
   );
 end;
-$$;
+$func$;
 
--- ------------------------------------------------------------------------------
 -- 8. FUNGSI ADMIN LENGKAP DENGAN SECRET KEY 'Surabaya123'
--- ------------------------------------------------------------------------------
 create or replace function public.verify_admin_secret(passcode text)
 returns jsonb
 language plpgsql
 security definer
 set search_path = public, extensions
-as $$
+as $func$
 declare
   matched_key text := null;
 begin
@@ -398,14 +381,14 @@ begin
     return jsonb_build_object('success', false, 'role', null, 'message', 'Passkey admin tidak valid');
   end if;
 end;
-$$;
+$func$;
 
 create or replace function public.admin_list_all_members(passcode text)
 returns jsonb
 language plpgsql
 security definer
 set search_path = public, extensions
-as $$
+as $func$
 declare
   computed_hash text;
   matched_key text;
@@ -439,7 +422,7 @@ begin
 
   return jsonb_build_object('success', true, 'data', v_users);
 end;
-$$;
+$func$;
 
 create or replace function public.admin_update_member_role(
   passcode text,
@@ -452,7 +435,7 @@ returns jsonb
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $func$
 declare
   computed_hash text;
   matched_key text;
@@ -484,7 +467,7 @@ begin
 
   return jsonb_build_object('success', true, 'message', 'Data member berhasil diperbarui');
 end;
-$$;
+$func$;
 
 create or replace function public.admin_delete_member(
   passcode text,
@@ -494,7 +477,7 @@ returns jsonb
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $func$
 declare
   computed_hash text;
   matched_key text;
@@ -513,7 +496,7 @@ begin
   delete from public.user_profiles where id = target_user_id;
   return jsonb_build_object('success', true, 'message', 'Member berhasil dihapus dari sistem');
 end;
-$$;
+$func$;
 
 create or replace function public.admin_add_manual_member(
   passcode text,
@@ -526,7 +509,7 @@ returns jsonb
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $func$
 declare
   computed_hash text;
   matched_key text;
@@ -560,11 +543,9 @@ begin
 
   return jsonb_build_object('success', true, 'message', 'Member manual berhasil ditambahkan', 'id', v_new_id, 'unique_code', v_code);
 end;
-$$;
+$func$;
 
--- ------------------------------------------------------------------------------
 -- 9. KEBIJAKAN ROW LEVEL SECURITY (RLS) TINGKAT TINGGI
--- ------------------------------------------------------------------------------
 alter table public.member_tiers enable row level security;
 alter table public.user_profiles enable row level security;
 alter table public.collaboration_locks enable row level security;
@@ -639,7 +620,6 @@ grant execute on function public.release_project_lock(text, text, jsonb) to anon
 grant execute on function public.check_project_sync_state(text, text) to anon, authenticated;
 
 -- 10. RPC PROFILE GET OR CREATE DENGAN KODE 3 DIGIT OTOMATIS
--- ------------------------------------------------------------------------------
 create or replace function public.get_or_create_user_profile(
   p_email text,
   p_full_name text default null,
@@ -649,7 +629,7 @@ returns jsonb
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $func$
 declare
   v_user record;
   v_random_code integer;
@@ -691,13 +671,11 @@ begin
     'allowed_features', v_user.allowed_features
   );
 end;
-$$;
+$func$;
 
 grant execute on function public.get_or_create_user_profile(text, text, text) to anon, authenticated;
 
--- ------------------------------------------------------------------------------
 -- 11. RPC ADMIN WORKSPACE GATEWAY DENGAN SECRET KEY Surabaya123
--- ------------------------------------------------------------------------------
 create or replace function public.admin_workspace_gateway(
   passcode text,
   action text,
@@ -707,7 +685,7 @@ returns jsonb
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $func$
 declare
   computed_hash text;
   matched_key text;
@@ -877,13 +855,11 @@ begin
     return jsonb_build_object('success', false, 'message', 'Aksi tidak dikenal');
   end if;
 end;
-$$;
+$func$;
 
 grant execute on function public.admin_workspace_gateway(text, text, jsonb) to anon, authenticated;
 
--- ------------------------------------------------------------------------------
 -- SEED ADMINISTRATOR RESMI
--- ------------------------------------------------------------------------------
 insert into public.user_profiles (id, email, full_name, role, plan_type, status, unique_code, allowed_features)
 values
   (gen_random_uuid(), 'mivakhorim@gmail.com', 'M Iva Khorim', 'admin', 'LIFETIME', 'ACTIVE', 754, '{"canExportAll": true, "canCustomAhsp": true, "canBapTermin": true}'::jsonb),
