@@ -230,20 +230,35 @@ a:hover { color: var(--color-primary-hover); text-decoration: underline; }
   }
   .meta-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 6px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 4px 18px !important;
     margin-top: 6px !important;
     padding-top: 6px !important;
     border-top: 1px solid #e2e8f0 !important;
   }
+  .meta-item {
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 6px !important;
+    min-width: 0 !important;
+  }
   .meta-label {
-    font-size: 6.5pt !important;
+    font-size: 7.5pt !important;
     color: #64748b !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+  .meta-label::after {
+    content: ":";
+    margin-left: 1px;
   }
   .meta-value {
     font-size: 8pt !important;
     font-weight: 700 !important;
     color: #0f172a !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
   .table-responsive {
     border: 1px solid #94a3b8 !important;
@@ -372,23 +387,27 @@ a:hover { color: var(--color-primary-hover); text-decoration: underline; }
   box-shadow: 0 0 0 2px var(--color-primary-light);
 }
 
+.page-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0a2e5c;
+  line-height: 1.3;
+  margin: 6px 0 4px;
+}
 .adsense-card {
-  background-color: var(--color-surface);
-  border: 1px dashed var(--color-border-subtle);
-  border-radius: var(--radius-md);
-  padding: 12px;
-  margin: 16px 0;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 4px 0;
   text-align: center;
-  min-height: 90px;
+  min-height: 0;
   position: relative;
 }
 .adsense-tag {
-  display: inline-block;
-  font-size: 10px;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 6px;
+  display: none !important;
+}
+.adsense-card:not(:has(iframe)) {
+  display: none !important;
 }
 
 .nav-bottom-row {
@@ -613,6 +632,30 @@ a:hover { color: var(--color-primary-hover); text-decoration: underline; }
 }
 
 @media (max-width: 640px) {
+  .main-content {
+    padding: 8px 6px 20px !important;
+  }
+  .card-rest {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 2px 0 !important;
+    margin-bottom: 12px !important;
+  }
+  .page-title {
+    font-size: 13.5px !important;
+    font-weight: 800 !important;
+    line-height: 1.35 !important;
+    margin: 4px 0 3px !important;
+  }
+  .adsense-card {
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 2px 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
   .header-container {
     padding: 8px 12px;
     gap: 8px;
@@ -765,20 +808,35 @@ a:hover { color: var(--color-primary-hover); text-decoration: underline; }
   }
   .meta-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 6px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 4px 18px !important;
     margin-top: 6px !important;
     padding-top: 6px !important;
     border-top: 1px solid #e2e8f0 !important;
   }
+  .meta-item {
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 6px !important;
+    min-width: 0 !important;
+  }
   .meta-label {
-    font-size: 6.5pt !important;
+    font-size: 7.5pt !important;
     color: #64748b !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+  .meta-label::after {
+    content: ":";
+    margin-left: 1px;
   }
   .meta-value {
     font-size: 8pt !important;
     font-weight: 700 !important;
     color: #0f172a !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
   .table-responsive {
     border: 1px solid #94a3b8 !important;
@@ -1359,6 +1417,27 @@ a:hover { color: var(--color-primary-hover); text-decoration: underline; }
     var dStr = now.toLocaleDateString("id-ID", {day: "numeric", month: "short", year: "numeric"});
     var dateEls = document.querySelectorAll(".print-current-date");
     dateEls.forEach(function(el){ el.textContent = dStr; });
+  </script>
+  <script>
+    (function(){
+      function hideEmptyAds(){
+        document.querySelectorAll('.adsense-card').forEach(function(c){
+          var ins = c.querySelector('ins.adsbygoogle');
+          if (!ins || ins.offsetHeight === 0 || !ins.querySelector('iframe')) {
+            c.style.display = 'none';
+          } else {
+            c.style.display = 'block';
+          }
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', hideEmptyAds);
+      } else {
+        hideEmptyAds();
+      }
+      window.addEventListener('load', hideEmptyAds);
+      setTimeout(hideEmptyAds, 2000);
+    })();
   </script>
 </body>
 </html>

@@ -15,7 +15,7 @@
     "tableOrders": "billing_orders"
   },
   "googleAuth": {
-    "clientId": "",
+    "clientId": "194944801134-etvtpajb04e1jdkrmiv07sjupsqul29p.apps.googleusercontent.com",
     "scope": "openid email profile https://www.googleapis.com/auth/drive.file"
   },
   "roles": {

@@ -3,16 +3,16 @@
 > Pengembang: Duta Digital Agensi (dutamik.id) - Sukoharjo, Jawa Tengah.
 
 ## Ringkasan Eksekutif
-Duta RAB S1 (https://rab.dutamik.id/) adalah platform web resmi untuk perhitungan Rencana Anggaran Biaya (RAB) dan katalog Analisa Harga Satuan Pekerjaan (AHSP) konstruksi terlengkap di Indonesia. Menyajikan 2.579 item koefisien analisa resmi standar SE Dirjen Bina Konstruksi No. 47/SE/Dk/2026 yang terbagi dalam bidang Cipta Karya, Sumber Daya Air (SDA), dan Bina Marga.
+[Duta RAB S1](https://rab.dutamik.id/) adalah platform web resmi untuk perhitungan Rencana Anggaran Biaya (RAB) dan katalog Analisa Harga Satuan Pekerjaan (AHSP) konstruksi terlengkap di Indonesia. Menyajikan 2.579 item koefisien analisa resmi standar SE Dirjen Bina Konstruksi No. 47/SE/Dk/2026 yang terbagi dalam bidang Cipta Karya, Sumber Daya Air (SDA), dan Bina Marga.
 
 ## Struktur URL Utama
-- Aplikasi RAB Interaktif: https://rab.dutamik.id/
-- Katalog Indeks AHSP SNI: https://rab.dutamik.id/ahsp/
-- Rincian AHSP Spesifik: https://rab.dutamik.id/ahsp/{KODE}.html
-- Disclaimer & Sumber Rujukan: https://rab.dutamik.id/disclaimer.html
-- Kebijakan Privasi: https://rab.dutamik.id/privacy.html
-- Syarat & Ketentuan: https://rab.dutamik.id/terms.html
-- Pusat Bantuan & Kontak: https://rab.dutamik.id/kontak.html
+- [Aplikasi RAB Interaktif](https://rab.dutamik.id/): Sistem perhitungan RAB interaktif, volume pekerjaan, kurva S, jadwal kalender, dan ekspor dokumen A4.
+- [Katalog Indeks AHSP SNI](https://rab.dutamik.id/ahsp/): Pustaka indeks katalog lengkap 2.579 item analisa satuan pekerjaan PUPR 2026.
+- [Rincian AHSP Spesifik](https://rab.dutamik.id/ahsp/): Rincian rujukan koefisien tenaga kerja, bahan material, peralatan, dan simulator volume interaktif.
+- [Disclaimer & Batasan Tanggung Jawab](https://rab.dutamik.id/disclaimer.html): Informasi sumber data resmi pemerintah dan batasan tanggung jawab pengembang.
+- [Kebijakan Privasi Data](https://rab.dutamik.id/privacy.html): Jaminan keamanan data proyek lokal dan enkripsi data browser.
+- [Syarat & Ketentuan Layanan](https://rab.dutamik.id/terms.html): Ketentuan lisensi penggunaan aplikasi Duta RAB S1.
+- [Pusat Bantuan & Kontak Dukungan](https://rab.dutamik.id/kontak.html): Saluran komunikasi pengembang dan usulan perbaikan data.
 
 ## Landasan Regulasi & Otoritas
 1. Surat Edaran Direktur Jenderal Bina Konstruksi Kementerian PUPR No. 47/SE/Dk/2026 tentang Pedoman Analisis Harga Satuan Pekerjaan Bidang Pekerjaan Umum.
@@ -36,7 +36,7 @@ Setiap halaman rincian AHSP menyajikan:
 
 ## Kontak & Koreksi Data
 Saran dan usulan perbaikan koefisien dapat diajukan kepada:
-- Pengembang: Duta Digital Agensi
-- Situs Resmi: https://dutamik.id/
-- WhatsApp: +62 831-3030-0094
+- Pengembang: [Duta Digital Agensi](https://dutamik.id/)
+- Situs Resmi: [dutamik.id](https://dutamik.id/)
+- WhatsApp: [+62 831-3030-0094](https://wa.me/6283130300094)
 - Alamat: Bulusan RT 01 RW 08 Mandan, Sukoharjo, Jawa Tengah

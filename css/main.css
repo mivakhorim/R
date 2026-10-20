@@ -2933,7 +2933,12 @@ table thead th,
 
 @media (max-width: 768px) {
   #globalPrintBtn {
-    display: none !important;
+    display: inline-flex !important;
+    padding: 4px !important;
+    height: 30px !important;
+    width: 30px !important;
+    align-items: center;
+    justify-content: center;
   }
 
   .mobile-floating-print-btn,
@@ -3284,5 +3289,217 @@ table thead th,
   padding: 5px 12px;
   font-size: 12px;
   border-radius: var(--radius-sm, 4px);
+}
+
+.header-auth-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.2;
+}
+.header-auth-badge:hover {
+  background: #f1f5f9;
+  color: #0a2e5c;
+}
+.topbar-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 5px 7px;
+  border-radius: 6px;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.topbar-icon-btn:hover {
+  background: #f1f5f9;
+  color: #0a2e5c;
+}
+.tier-tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.tier-tag.free {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+.tier-tag.pro {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+.tier-tag.admin {
+  background: #0a2e5c;
+  color: #ffffff;
+}
+
+.signature-responsive-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-around !important;
+  gap: 16px !important;
+  margin-top: 24pt !important;
+  width: 100% !important;
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+}
+
+.signature-responsive-grid .sig-card-col {
+  flex: 1 1 200px !important;
+  max-width: 280px !important;
+  min-width: 170px !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 640px) {
+  .signature-responsive-grid {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+  .signature-responsive-grid .sig-card-col {
+    flex: 1 1 100% !important;
+    max-width: 300px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+}
+
+@media print {
+  .signature-responsive-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+  }
+  .signature-responsive-grid .sig-card-col {
+    flex: 1 1 0 !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    padding: 12px 12px max(env(safe-area-inset-bottom, 20px), 84px) 12px !important;
+  }
+  .modal-backdrop {
+    padding: 12px 12px max(env(safe-area-inset-bottom, 20px), 84px) 12px !important;
+    align-items: flex-start !important;
+    overflow-y: auto !important;
+  }
+  .modal-dialog,
+  .modal-card {
+    width: 100% !important;
+    max-width: min(520px, calc(100vw - 24px)) !important;
+    max-height: calc(100dvh - max(env(safe-area-inset-bottom, 20px), 88px) - 24px) !important;
+    margin: 12px auto !important;
+    overflow-y: auto !important;
+  }
+  .mobile-floating-print-btn,
+  #mobileFloatingPrintBtn {
+    bottom: max(env(safe-area-inset-bottom, 20px) + 24px, 94px) !important;
+  }
+  #projectInfoForm .form-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #projectInfoForm .form-row .form-group {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+  #projectInfoForm .form-control {
+    width: 100% !important;
+    height: 40px !important;
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+  }
+  #rehabFieldsContainer {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #rehabFieldsContainer .form-group {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+  .card-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  .card-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .card-actions .btn {
+    flex: 1 1 calc(50% - 4px) !important;
+    min-width: 130px !important;
+    height: 38px !important;
+    font-size: 12px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 10px !important;
+  }
+  .project-mobile-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  }
+  .project-mobile-card-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: #0f172a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .project-mobile-card-meta {
+    font-size: 11.5px;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .project-mobile-card-actions {
+    display: flex;
+    gap: 6px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 10px;
+  }
+  .project-mobile-card-actions .btn {
+    flex: 1 1 0;
+    height: 36px;
+    font-size: 11.5px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
