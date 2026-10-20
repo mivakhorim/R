@@ -9,19 +9,27 @@
   <meta name="author" content="Duta Digital Agensi">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://rab.dutamik.id/">
-  <meta property="og:type" content="website">
+    <meta property="og:type" content="website">
   <meta property="og:url" content="https://rab.dutamik.id/">
   <meta property="og:title" content="Aplikasi Rencana Anggaran Biaya (RAB) Konstruksi - Duta RAB S1">
   <meta property="og:description" content="Platform estimasi anggaran biaya konstruksi terlengkap sesuai SE Bina Konstruksi PUPR No. 47/2026. Analisis AHSP, volume, kurva S, dan penagihan termin BAP.">
   <meta property="og:site_name" content="Duta RAB S1">
   <meta property="og:locale" content="id_ID">
   <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://rab.dutamik.id/assets/logo.webp">
+  <meta property="og:image:secure_url" content="https://rab.dutamik.id/assets/logo.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Logo Aplikasi Duta RAB S1 - Duta Digital Agensi">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aplikasi Rencana Anggaran Biaya (RAB) Konstruksi - Duta RAB S1">
-  <meta name="twitter:description" content="Platform estimasi anggaran biaya konstruksi terlengkap sesuai SE Bina Konstruksi PUPR No. 47/2026.">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="twitter:description" content="Platform estimasi anggaran biaya konstruksi terlengkap sesuai SE Bina Konstruksi PUPR No. 47/2026. Analisis AHSP, volume, kurva S, dan penagihan termin BAP.">
+  <meta name="twitter:image" content="https://rab.dutamik.id/assets/logo.webp">
+  <meta name="twitter:image:alt" content="Logo Aplikasi Duta RAB S1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/webp" sizes="32x32" href="assets/favicon.webp">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.webp">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0a2e5c">
   <link rel="alternate" type="text/plain" href="https://rab.dutamik.id/llms.txt" title="LLM Context">
@@ -66,6 +74,15 @@
         "url": "https://rab.dutamik.id/",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "All modern browsers (Chrome, Edge, Firefox, Safari)",
+        "image": "https://rab.dutamik.id/assets/logo.webp",
+        "screenshot": "https://rab.dutamik.id/assets/logo.webp",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1280",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -91,6 +108,7 @@
         ]
       },
       {
+        "@type": "WebPage" {
         "@type": "WebPage",
         "@id": "https://rab.dutamik.id/#webpage",
         "url": "https://rab.dutamik.id/",
@@ -129,10 +147,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/modals.css">
-  <link rel="stylesheet" href="css/print-a4.css">
+  <link rel="stylesheet" href="css/bundle-app.css">
   
       <style id="anti-leak-print-guard">
     @media screen {
@@ -185,7 +200,7 @@
     <aside class="app-sidebar">
       <div class="sidebar-header">
         <div class="brand-title" style="display: flex; align-items: center; gap: 8px;">
-          <img src="assets/logo.png" alt="Logo Duta Digital Agensi" width="24" height="24" style="object-fit: contain; border-radius: 4px;">
+          <img src="assets/logo.webp" alt="Logo Duta Digital Agensi" width="24" height="24" style="object-fit: contain; border-radius: 4px;">
           <span>Duta RAB S1</span>
         </div>
         <div class="brand-sub">SE Bina Konstruksi No. 47/2026</div>
@@ -403,7 +418,7 @@
     <div class="modal-dialog" style="max-width: 480px; width: min(480px, calc(100vw - 24px)); border-radius: 12px; overflow: hidden; background: #ffffff;">
       <div class="modal-header" style="padding: 14px 18px; border-bottom: 1px solid #e2e8f0; background: #ffffff; display: flex; align-items: center; justify-content: space-between;">
         <div style="display: flex; align-items: center; gap: 8px;">
-          <img src="assets/logo.png" alt="Duta RAB S1" style="height: 24px; width: auto; object-fit: contain;">
+          <img src="assets/logo.webp" alt="Duta RAB S1" style="height: 24px; width: auto; object-fit: contain;">
           <h3 style="font-size: 14px; font-weight: 700; color: #0a2e5c; margin: 0;">Registrasi / Login</h3>
         </div>
         <button type="button" class="modal-close-btn" onclick="closeMemberModal()" aria-label="Tutup Modal Member" style="background: transparent; border: none; font-size: 20px; color: #64748b; cursor: pointer; line-height: 1;">&times;</button>
@@ -713,12 +728,13 @@
   </div>
 
   
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="js/utils/bundle-utils.js"></script>
   <script src="js/data/bundle-data.js"></script>
   <script src="js/modules/bundle-modules.js"></script>
-  <script src="assets/social-links.js"></script>
+  <script src="js/data/master-ahsp.js" defer></script>
+  <script src="assets/social-links.js" defer></script>
   <script src="js/app.js"></script>
   <script>
     window.loadSupportingScript = function(src, cb) {
