@@ -174,6 +174,8 @@
         height: auto !important;
         opacity: 1 !important;
       }
+      #appPreloader,
+      #appPreloader *,
       #globalLoader,
       .global-loader-backdrop,
       .global-loader-card,
@@ -195,12 +197,12 @@
   </style>
 </head>
 <body>
-  <div id="appPreloader">
-    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 20px;">
-      <img src="assets/logo.webp" alt="Duta RAB S1" width="52" height="52" style="object-fit: contain; border-radius: 8px;">
-      <div style="font-size: 16px; font-weight: 800; color: #0a2e5c; letter-spacing: -0.2px;">Duta RAB S1</div>
-      <div style="font-size: 13px; font-weight: 600; color: #64748b;">Memuat Daftar AHSP</div>
-      <div class="preloader-line-wrap">
+  <div id="appPreloader" style="position: fixed; inset: 0; width: 100vw; height: 100vh; background: #ffffff; z-index: 9999999; display: flex; align-items: center; justify-content: center; pointer-events: auto; transition: opacity 0.35s ease, visibility 0.35s ease;">
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 240px; padding: 12px 16px;">
+      <img src="assets/logo.webp" alt="Duta RAB S1" width="46" height="46" style="object-fit: contain; border-radius: 6px; display: block; margin: 0 auto;">
+      <div style="font-size: 15px; font-weight: 800; color: #0a2e5c; letter-spacing: -0.2px; margin-top: 8px; margin-bottom: 2px; line-height: 1.2;">Duta RAB S1</div>
+      <div style="font-size: 12px; font-weight: 600; color: #64748b; margin-top: 0; margin-bottom: 8px; line-height: 1.2;">Memuat Daftar AHSP</div>
+      <div class="preloader-line-wrap" style="width: 160px; height: 3px; background: #e2e8f0; border-radius: 9999px; overflow: hidden; position: relative; margin: 0 auto;">
         <div class="preloader-line-bar"></div>
       </div>
     </div>
@@ -846,6 +848,29 @@
         setTimeout(function() { if (!m.classList.contains('open')) m.style.display = 'none'; }, 150);
       }
     }
+  </script>
+<script>
+    window.dismissAppPreloader = function() {
+      if (window._preloaderDismissed) return;
+      window._preloaderDismissed = true;
+      var p = document.getElementById("appPreloader");
+      if (p) {
+        p.style.transition = "opacity 0.35s ease, visibility 0.35s ease";
+        p.style.opacity = "0";
+        p.style.pointerEvents = "none";
+        setTimeout(function() {
+          if (p && p.parentNode) p.parentNode.removeChild(p);
+        }, 360);
+      }
+    };
+    window.addEventListener("load", function() {
+      setTimeout(function() {
+        if (typeof window.dismissAppPreloader === "function") window.dismissAppPreloader();
+      }, 350);
+    });
+    setTimeout(function() {
+      if (typeof window.dismissAppPreloader === "function") window.dismissAppPreloader();
+    }, 2200);
   </script>
 </body>
 </html>
