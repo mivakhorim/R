@@ -1390,3 +1390,76 @@
     background: transparent !important;
   }
 }
+
+
+@media print {
+  .proposal-page .table,
+  .proposal-page table,
+  table.table-bordered,
+  .table-bordered {
+    border-collapse: collapse !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+  .proposal-page .table th,
+  .proposal-page table th,
+  .table-bordered th,
+  .table th {
+    border: 1px solid #cbd5e1 !important;
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .proposal-page .table td,
+  .proposal-page table td,
+  .table-bordered td,
+  .table td {
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+  .cover-stakeholder-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 10px 0 !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+  .cover-stakeholder-table td {
+    border: 1px solid #cbd5e1 !important;
+    background-color: #fafbfc !important;
+    padding: 8px 12px !important;
+    vertical-align: top !important;
+  }
+  .cover-total-band {
+    background-color: #0a2e5c !important;
+    color: #ffffff !important;
+    border: 1px solid #0a2e5c !important;
+    padding: 10px 14px !important;
+    text-align: center !important;
+    margin: 8px 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .toc-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: baseline !important;
+    font-size: 8.5pt !important;
+    margin-bottom: 10px !important;
+  }
+  .toc-title {
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    white-space: nowrap !important;
+  }
+  .toc-dots {
+    flex: 1 !important;
+    border-bottom: 1px dotted #94a3b8 !important;
+    margin: 0 8px !important;
+    min-width: 20px !important;
+  }
+  .toc-page {
+    font-weight: 700 !important;
+    color: #0a2e5c !important;
+    white-space: nowrap !important;
+  }
+}
