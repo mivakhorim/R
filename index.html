@@ -834,6 +834,9 @@
       if (window.closeAllOpenModals) window.closeAllOpenModals('memberModal');
       var m = document.getElementById('memberModal');
       if (m) {
+        var isLogged = (window.GoogleAuthManager && typeof window.GoogleAuthManager.getCurrentUser === 'function' && window.GoogleAuthManager.getCurrentUser()) || localStorage.getItem('duta_auth_user');
+        var t = document.getElementById('memberModalTitle');
+        if (t) t.textContent = isLogged ? 'Member Area' : 'Registrasi / Login';
         m.style.display = 'flex';
         setTimeout(function() { m.classList.add('open'); }, 10);
         if (window.GoogleAuthManager && typeof window.GoogleAuthManager.updateMemberUI === 'function') {
