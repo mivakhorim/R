@@ -457,15 +457,15 @@
   }
   .proposal-page .table th,
   .proposal-page table th {
-    padding: 2.5pt 4pt !important;
-    font-size: 7.2pt !important;
-    line-height: 1.2 !important;
+    padding: 4.5pt 6pt !important;
+    font-size: 7.8pt !important;
+    line-height: 1.35 !important;
   }
   .proposal-page .table td,
   .proposal-page table td {
-    padding: 2.5pt 4pt !important;
-    font-size: 7.2pt !important;
-    line-height: 1.25 !important;
+    padding: 4pt 6pt !important;
+    font-size: 7.8pt !important;
+    line-height: 1.35 !important;
   }
   .proposal-page .division-title-bar {
     padding: 2.5pt 6pt !important;
@@ -820,7 +820,7 @@
     width: 210mm;
     max-width: 100%;
     min-height: 297mm;
-    height: 297mm;
+    height: auto !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -829,7 +829,7 @@
     background: #ffffff;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
     border-radius: 4px;
-    overflow: hidden !important;
+    overflow: hidden !important;overflow: visible !important;
   }
 
   .proposal-page.cover-page {
