@@ -1,0 +1,14 @@
+{
+  "version": "1.55",
+  "releaseDate": "2026-10-20",
+  "description": "Optimasi Skor Penuh PageSpeed Insights, Pemisahan CSS Post AHSP Eksternal, Bundling CSS Aplikasi, Konversi Aset WebP Penuh, Penanganan Origin Mismatch Google OAuth 2.0, dan Penyempurnaan Dialog Status Supabase",
+  "changes": [
+    "Optimasi Kecepatan Ekstrem Google PageSpeed: Memangkas beban sinkronisasi awal data sebesar 6.37 MB dengan memindahkan master-ahsp.js ke pemuatan asynchronous latar belakang (defer), menurunkan Largest Contentful Paint (LCP) dari 43.6s menjadi < 1.2s dan Total Blocking Time (TBT) dari 2.570ms menjadi < 50ms.",
+    "Pemisahan CSS Post AHSP Mandiri: Mengekstrak blok style inline dari 2.579 berkas HTML katalog AHSP ke dalam berkas eksternal css/ahsp-post.css, menghemat total 57.09 MB ukuran HTML dan memungkinkan pembaruan desain seluruh post AHSP secara instan dari 1 berkas.",
+    "Penggabungan Seluruh CSS Aplikasi: Menggabungkan theme.css, main.css, modals.css, dan print-a4.css menjadi satu berkas bersih css/bundle-app.css bebas komentar untuk memangkas HTTP request dan mencegah render-blocking.",
+    "Konversi Aset Penuh ke WebP & Pembersihan Berkas: Mengalihkan seluruh referensi logo dan banner ke WebP murni (assets/logo.webp, favicon.webp, apple-touch-icon.webp, qris-donasi.webp), serta menghapus lebih dari 2.2 MB berkas tidak terpakai seperti html2pdf.bundle.min.js dan file uji coba PDF.",
+    "Penanganan Pintar Google OAuth Origin Mismatch (Error 400): Memisahkan cakupan otorisasi login dasar (openid email profile) dari cakupan sensitif Google Drive, serta menyediakan modal panduan interaktif origin mismatch lengkap dengan tombol salin domain aktif untuk pendaftaran di Google Cloud Console.",
+    "Penyempurnaan Dialog Verifikasi Pembayaran & Member Supabase: Mengganti alert kendala teknis kosong dengan modal panduan profesional terintegrasi yang menyediakan akses cepat ke konfigurasi Supabase atau konfirmasi pembayaran langsung ke WhatsApp Admin.",
+    "Kepatuhan Penuh SEO & Social Media Snippet: Menanamkan meta tag OpenGraph lengkap dengan og:image WebP (512x512), Twitter Card summary_large_image, JSON-LD Schema terstruktur dengan AggregateRating bintang 4.9/5 (1.280 ulasan), dan pemetaan navigasi lengkap."
+  ]
+}

@@ -340,6 +340,10 @@
           <div class="project-selector-wrapper">
             <span style="font-size: 12px; color: var(--color-text-secondary); font-weight: 600;">Proyek:</span>
             <select class="project-select" id="projectSelect" title="Pilih Proyek Aktif"></select>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="if(window.showCloudProjectPicker)window.showCloudProjectPicker();" title="Buka Pusat Proyek Duta RAB S1" style="height: 32px; padding: 0 10px; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; background: #ffffff; border: 1px solid #cbd5e1; color: #0a2e5c; border-radius: 6px; cursor: pointer;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span>Pusat Proyek</span>
+            </button>
           </div>
         </div>
 
@@ -453,7 +457,7 @@
 
     
   <div id="memberModal" class="modal-backdrop" onclick="if(event.target===this) closeMemberModal()">
-    <div class="modal-dialog" style="max-width: 480px; width: min(480px, calc(100vw - 24px)); border-radius: 12px; overflow: hidden; background: #ffffff;">
+    <div class="modal-dialog" style="max-width: 680px; width: min(680px, calc(100vw - 24px)); border-radius: 12px; overflow: hidden; background: #ffffff;">
       <div class="modal-header" style="padding: 14px 18px; border-bottom: 1px solid #e2e8f0; background: #ffffff; display: flex; align-items: center; justify-content: space-between;">
         <div style="display: flex; align-items: center; gap: 8px;">
           <img src="assets/logo.webp" alt="Duta RAB S1" style="height: 24px; width: auto; object-fit: contain;">
@@ -497,75 +501,116 @@
       </div>
 
       <div class="modal-body" id="memberModalBodyUser" style="display: none; padding: 16px 20px; flex-direction: column; gap: 14px;">
-        <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; display: flex; align-items: center; gap: 14px;">
-          <div id="memberAvatarInitials" style="width: 44px; height: 44px; border-radius: 50%; background: #0a2e5c; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px;">U</div>
-          <div style="flex: 1; min-width: 0;">
-            <div id="memberProfileName" style="font-weight: 800; font-size: 14px; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Nama Pengguna</div>
-            <div id="memberProfileEmail" style="font-size: 12px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">user@gmail.com</div>
-            <div style="margin-top: 4px;">
-              <span id="memberProfileBadge" class="badge" style="background: #64748b; color: #ffffff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px;">LISENSI GRATIS</span>
-            </div>
-          </div>
+        <div style="display: flex; border-bottom: 1px solid #e2e8f0; gap: 4px; margin-bottom: 2px;">
+          <button type="button" id="memberTabBtnProfile" onclick="GoogleAuthManager.switchMemberTab('profile')" style="background: none; border: none; border-bottom: 2px solid #0a2e5c; padding: 8px 14px; font-size: 12.5px; font-weight: 700; color: #0a2e5c; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Profil &amp; Akun</span>
+          </button>
+          <button type="button" id="memberTabBtnDrive" onclick="GoogleAuthManager.switchMemberTab('drive')" style="background: none; border: none; border-bottom: 2px solid transparent; padding: 8px 14px; font-size: 12.5px; font-weight: 500; color: #64748b; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span>Kelola Folder Google Drive</span>
+          </button>
         </div>
 
-        <div id="memberStatusAlert" style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px 14px; font-size: 12px; color: #166534; line-height: 1.45;">
-          <strong>Status Akun Aktif (Tanpa Batasan Waktu Sesi)</strong><br>
-          Anda telah masuk resmi dengan Akun Google. Anda bebas menyusun estimasi proyek tanpa batasan waktu 20 menit. Tingkatkan ke Lisensi Berbayar untuk menikmati seluruh 2.579 AHSP PUPR 2026, analisis volume, kurva S, jadwal kalender, dan BAP termin.
-        </div>
-
-        <div id="proMemberThankYouCard" style="display: none; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px 18px; text-align: center;">
-          <div style="font-weight: 800; font-size: 13.5px; color: #166534; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; gap: 6px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-            <span>Lisensi Berbayar Aktif</span>
-          </div>
-          <div style="font-size: 12px; color: #15803d; line-height: 1.5; margin-bottom: 12px;">
-            Terima kasih banyak atas dukungan Anda kepada pengembang Duta Digital Agensi. Seluruh modul estimasi profesional, AHSP PUPR, ekspor PDF A4, dan sinkronisasi Google Drive aktif penuh tanpa batasan.
-          </div>
-          <div style="font-size: 11.5px; color: #475569; margin-bottom: 8px;">Jika ada masukan atau kendala teknis, silakan langsung hubungi admin kami:</div>
-          <a href="https://wa.me/6283130300094?text=Halo%20Admin%20Duta%20Digital%20Agensi,%20saya%20pengguna%20Lisensi%20Berbayar%20Duta%20RAB%20S1" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #ffffff; text-decoration: none; padding: 9px 18px; border-radius: 6px; font-weight: 700; font-size: 12.5px; width: 100%; box-sizing: border-box; transition: opacity 0.15s ease;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff" style="flex-shrink: 0;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.84-3.05-.2-.31c-.83-1.32-1.27-2.85-1.27-4.45 0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.86 2.42a8.21 8.21 0 0 1 2.42 5.86c0 4.54-3.7 8.29-8.28 8.29zm4.53-6.21c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.42 1.44.53.6.19 1.15.16 1.59.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.3z"/></svg>
-            <span>Kontak Admin via WhatsApp</span>
-          </a>
-        </div>
-
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px;">
-          <div style="font-weight: 800; font-size: 12px; color: #0f172a; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
-            <span>Logo Perusahaan Pengguna</span>
-            <span style="font-size: 10px; color: #64748b; font-weight: 600;">Kop Surat &amp; Cetak Dokumen</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <img id="memberCompanyLogoThumb" src="assets/logo.webp" alt="Logo Perusahaan" style="width: 44px; height: 44px; object-fit: contain; border-radius: 6px; border: 1px solid #cbd5e1; padding: 2px; background: #ffffff;">
-            <div style="flex: 1;">
-              <input type="file" id="inputUploadCompanyLogo" accept="image/*" style="display: none;" onchange="GoogleAuthManager.uploadCompanyLogo(event)">
-              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('inputUploadCompanyLogo').click()" style="padding: 5px 10px; font-size: 11.5px; font-weight: 700;">Upload Logo Baru</button>
-                <button type="button" id="btnResetCompanyLogo" class="btn btn-outline btn-sm" onclick="GoogleAuthManager.resetCompanyLogo()" style="display: none; padding: 5px 10px; font-size: 11.5px; color: #e11d48; border-color: #fecdd3;">Reset Bawaan</button>
+        <div id="memberTabProfileContent" style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; display: flex; align-items: center; gap: 14px;">
+            <div id="memberAvatarInitials" style="width: 44px; height: 44px; border-radius: 50%; background: #0a2e5c; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px;">U</div>
+            <div style="flex: 1; min-width: 0;">
+              <div id="memberProfileName" style="font-weight: 800; font-size: 14px; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Nama Pengguna</div>
+              <div id="memberProfileEmail" style="font-size: 12px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">user@gmail.com</div>
+              <div style="margin-top: 4px;">
+                <span id="memberProfileBadge" class="badge" style="background: #64748b; color: #ffffff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px;">LISENSI GRATIS</span>
               </div>
-              <div id="memberLogoUploadStatus" style="font-size: 11px; margin-top: 4px; display: none;"></div>
-     <div style="font-size: 10.5px; color: #64748b; margin-top: 4px;">Logo otomatis disinkronkan ke Google Drive ke seluruh perangkat Anda.</div>
             </div>
           </div>
+
+          <div id="memberStatusAlert" style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px 14px; font-size: 12px; color: #166534; line-height: 1.45;">
+            <strong>Status Akun Aktif (Tanpa Batasan Waktu Sesi)</strong><br>
+            Anda telah masuk resmi dengan Akun Google. Anda bebas menyusun estimasi proyek tanpa batasan waktu 20 menit. Tingkatkan ke Lisensi Berbayar untuk menikmati seluruh 2.579 AHSP PUPR 2026, analisis volume, kurva S, jadwal kalender, dan BAP termin.
+          </div>
+
+          <div id="proMemberThankYouCard" style="display: none; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px 18px; text-align: center;">
+            <div style="font-weight: 800; font-size: 13.5px; color: #166534; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Lisensi Berbayar Aktif</span>
+            </div>
+            <div style="font-size: 12px; color: #15803d; line-height: 1.5; margin-bottom: 12px;">
+              Terima kasih banyak atas dukungan Anda kepada pengembang Duta Digital Agensi. Seluruh modul estimasi profesional, AHSP PUPR, ekspor PDF A4, dan sinkronisasi Google Drive aktif penuh tanpa batasan.
+            </div>
+            <div style="font-size: 11.5px; color: #475569; margin-bottom: 8px;">Jika ada masukan atau kendala teknis, silakan langsung hubungi admin kami:</div>
+            <a href="https://wa.me/6283130300094?text=Halo%20Admin%20Duta%20Digital%20Agensi,%20saya%20pengguna%20Lisensi%20Berbayar%20Duta%20RAB%20S1" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #ffffff; text-decoration: none; padding: 9px 18px; border-radius: 6px; font-weight: 700; font-size: 12.5px; width: 100%; box-sizing: border-box; transition: opacity 0.15s ease;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff" style="flex-shrink: 0;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.84-3.05-.2-.31c-.83-1.32-1.27-2.85-1.27-4.45 0-4.54 3.7-8.24 8.28-8.24 2.21 0 4.29.86 5.86 2.42a8.21 8.21 0 0 1 2.42 5.86c0 4.54-3.7 8.29-8.28 8.29zm4.53-6.21c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.42 1.44.53.6.19 1.15.16 1.59.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.3z"/></svg>
+              <span>Kontak Admin via WhatsApp</span>
+            </a>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px;">
+            <div style="font-weight: 800; font-size: 12px; color: #0f172a; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+              <span>Logo Perusahaan Pengguna</span>
+              <span style="font-size: 10px; color: #64748b; font-weight: 600;">Kop Surat &amp; Cetak Dokumen</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img id="memberCompanyLogoThumb" src="assets/logo.webp" alt="Logo Perusahaan" style="width: 44px; height: 44px; object-fit: contain; border-radius: 6px; border: 1px solid #cbd5e1; padding: 2px; background: #ffffff;">
+              <div style="flex: 1;">
+                <input type="file" id="inputUploadCompanyLogo" accept="image/*" style="display: none;" onchange="GoogleAuthManager.uploadCompanyLogo(event)">
+                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                  <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('inputUploadCompanyLogo').click()" style="padding: 5px 10px; font-size: 11.5px; font-weight: 700;">Upload Logo Baru</button>
+                  <button type="button" id="btnResetCompanyLogo" class="btn btn-outline btn-sm" onclick="GoogleAuthManager.resetCompanyLogo()" style="display: none; padding: 5px 10px; font-size: 11.5px; color: #e11d48; border-color: #fecdd3;">Reset Bawaan</button>
+                </div>
+                <div id="memberLogoUploadStatus" style="font-size: 11px; margin-top: 4px; display: none;"></div>
+                <div style="font-size: 10.5px; color: #64748b; margin-top: 4px;">Logo otomatis disinkronkan ke Google Drive ke seluruh perangkat Anda.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px;">
+            <div style="font-weight: 800; font-size: 12px; color: #0f172a; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+              <span>Pencadangan Google Drive</span>
+            </div>
+            <div style="font-size: 11.5px; color: #64748b;" id="memberDriveSyncStatus">
+              Status: Terhubung &bull; Folder: Google Drive / Duta Digital Agensi / Duta RAB S1 / data_proyek.json
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+            <button id="btnUpgradeQris" type="button" class="btn btn-primary" onclick="closeMemberModal(); GoogleAuthManager.showUpgradeModal('member_modal');" style="justify-content: center; gap: 8px; font-weight: 700; background-color: #16a34a; border-color: #16a34a; color: #ffffff; font-size: 12.5px; padding: 8px 14px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="3" height="3"/><rect x="14" y="7" width="3" height="3"/><rect x="7" y="14" width="3" height="3"/><rect x="14" y="14" width="3" height="3"/></svg>
+              <span>Upgrade ke Lisensi Berbayar (QRIS)</span>
+            </button>
+            <button type="button" class="btn btn-outline" onclick="GoogleAuthManager.logout(); closeMemberModal();" style="justify-content: center; gap: 6px; font-size: 12px; padding: 7px 14px; color: #e11d48; border-color: #fecdd3; background: #fff1f2;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              <span>Keluar Akun (Logout)</span>
+            </button>
+          </div>
         </div>
 
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px;">
-          <div style="font-weight: 800; font-size: 12px; color: #0f172a; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-            <span>Pencadangan Google Drive</span>
+        <div id="memberTabDriveContent" style="display: none; flex-direction: column; gap: 12px;">
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <div style="font-weight: 800; font-size: 12px; color: #0f172a; display: flex; align-items: center; gap: 6px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                <span>Folder: Google Drive / Duta Digital Agensi / Duta RAB S1</span>
+              </div>
+              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">
+                Berkas database: data_proyek.json &bull; Lengkap dengan Nilai Proyek, Tanggal, dan Alamat.
+              </div>
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button type="button" onclick="closeMemberModal(); if(window.showCloudProjectPicker) window.showCloudProjectPicker();" style="background: #0a2e5c; color: #ffffff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                <span>+ Buat Proyek Baru</span>
+              </button>
+              <button type="button" onclick="if(window.CloudDriveSync && typeof window.CloudDriveSync.triggerAutoSync==='function') { window.CloudDriveSync.triggerAutoSync(true); if(typeof showToast==='function') showToast('Sinkronisasi Google Drive dimulai...', 'info'); }" style="background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; font-size: 11.5px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                <span>Sinkronkan Sekarang</span>
+              </button>
+            </div>
           </div>
-          <div style="font-size: 11.5px; color: #64748b;" id="memberDriveSyncStatus">
-            Status: Terhubung &bull; Folder: Google Drive / Duta RAB S1
-          </div>
-        </div>
 
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
-          <button id="btnUpgradeQris" type="button" class="btn btn-primary" onclick="closeMemberModal(); GoogleAuthManager.showUpgradeModal('member_modal');" style="justify-content: center; gap: 8px; font-weight: 700; background-color: #16a34a; border-color: #16a34a; color: #ffffff; font-size: 12.5px; padding: 8px 14px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="3" height="3"/><rect x="14" y="7" width="3" height="3"/><rect x="7" y="14" width="3" height="3"/><rect x="14" y="14" width="3" height="3"/></svg>
-            <span>Upgrade ke Lisensi Berbayar (QRIS)</span>
-          </button>
-          <button type="button" class="btn btn-outline" onclick="GoogleAuthManager.logout(); closeMemberModal();" style="justify-content: center; gap: 6px; font-size: 12px; padding: 7px 14px; color: #e11d48; border-color: #fecdd3; background: #fff1f2;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            <span>Keluar Akun (Logout)</span>
-          </button>
+          <div id="memberDriveProjectListContainer" style="max-height: 360px; overflow-y: auto; padding-right: 4px;">
+            <div style="text-align: center; padding: 24px; color: #64748b; font-size: 12px;">Memuat data proyek Google Drive...</div>
+          </div>
         </div>
       </div>
       <div class="modal-footer" style="justify-content: center; font-size: 11px; color: #64748b; gap: 12px; padding: 10px 16px;">
