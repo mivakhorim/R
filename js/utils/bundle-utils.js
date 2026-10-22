@@ -5192,7 +5192,7 @@ window.PrintEngine = (function() {
     let watermarkHtml = "";
     if (!isPaidUser) {
       watermarkHtml = `
-        <div class="free-user-watermark" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); width: 10cm; font-size: 26pt; font-weight: 900; color: #ffffff; opacity: 0.9; text-shadow: 0 0 2px rgba(15, 23, 42, 0.4), 0 0 5px rgba(15, 23, 42, 0.2); -webkit-text-stroke: 1px rgba(15, 23, 42, 0.25); text-align: center; text-transform: uppercase; letter-spacing: 3px; pointer-events: none; z-index: 999999; user-select: none;">
+        <div class="free-user-watermark" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); width: 10cm; font-size: 26pt; font-weight: 900; color: #ffffff; opacity: 0.05; -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.18); text-shadow: none; text-align: center; text-transform: uppercase; letter-spacing: 3px; pointer-events: none; z-index: 999999; user-select: none;">
           Duta Digital Agensi
         </div>
       `;
@@ -5233,6 +5233,7 @@ window.PrintEngine = (function() {
         <link rel="stylesheet" href="css/print-a4.css">
         <style>
           .print-only { display: block !important; visibility: visible !important; }
+          .print-header-meta table, .print-header-meta table td, .print-header-meta table tr { border: none !important; background: transparent !important; }
           .no-print, .btn, .btn-group, .page-header-actions, .d-mobile-only { display: none !important; }
           .d-desktop-only, table.d-desktop-only { display: table !important; }
           div.d-desktop-only { display: block !important; }
@@ -5670,16 +5671,16 @@ window.PrintEngine = (function() {
             </div>
           </div>
           <div class="print-header-meta">
-            <table style="border-collapse: collapse; margin-left: auto; font-size: 8.5pt; color: #334155;">
-              <tr>
-                <td style="font-weight: 700; padding-right: 6px; text-align: left;">No. Dokumen</td>
-                <td style="font-weight: 700; padding-right: 6px;">:</td>
-                <td style="text-align: left; font-family: monospace;">${docNumStr}</td>
+            <table style="border-collapse: collapse !important; border: none !important; margin-left: auto; font-size: 8.5pt; color: #334155; background: transparent !important;">
+              <tr style="border: none !important; background: transparent !important;">
+                <td style="border: none !important; font-weight: 700; padding: 1px 6px 1px 0 !important; text-align: left; background: transparent !important; white-space: nowrap;">No. Dokumen</td>
+                <td style="border: none !important; font-weight: 700; padding: 1px 6px 1px 0 !important; text-align: center; background: transparent !important;">:</td>
+                <td style="border: none !important; text-align: left; font-family: monospace; padding: 1px 0 !important; background: transparent !important; white-space: nowrap;">${docNumStr}</td>
               </tr>
-              <tr>
-                <td style="font-weight: 700; padding-right: 6px; text-align: left;">Tanggal Cetak</td>
-                <td style="font-weight: 700; padding-right: 6px;">:</td>
-                <td style="text-align: left;">${printDate}</td>
+              <tr style="border: none !important; background: transparent !important;">
+                <td style="border: none !important; font-weight: 700; padding: 1px 6px 1px 0 !important; text-align: left; background: transparent !important; white-space: nowrap;">Tanggal Cetak</td>
+                <td style="border: none !important; font-weight: 700; padding: 1px 6px 1px 0 !important; text-align: center; background: transparent !important;">:</td>
+                <td style="border: none !important; text-align: left; padding: 1px 0 !important; background: transparent !important; white-space: nowrap;">${printDate}</td>
               </tr>
             </table>
           </div>
@@ -5781,16 +5782,16 @@ window.PrintEngine = (function() {
             <div style="font-size: 7pt; color: #475569;">Standar ${proj.dataSource || 'SE Dirjen Bina Konstruksi No. 47/SE/Dk/2026'}</div>
           </div>
           <div style="width: 28%; text-align: right; font-size: 7.5pt; color: #334155;">
-            <table style="border-collapse: collapse; margin-left: auto; font-size: 7.5pt; color: #334155;">
-              <tr>
-                <td style="font-weight: 700; padding-right: 4px; text-align: left;">No. Dokumen</td>
-                <td style="font-weight: 700; padding-right: 4px;">:</td>
-                <td style="text-align: left; font-family: monospace;">${docNumStr}</td>
+            <table style="border-collapse: collapse !important; border: none !important; margin-left: auto; font-size: 7.5pt; color: #334155; background: transparent !important;">
+              <tr style="border: none !important; background: transparent !important;">
+                <td style="border: none !important; font-weight: 700; padding: 1px 4px 1px 0 !important; text-align: left; background: transparent !important; white-space: nowrap;">No. Dokumen</td>
+                <td style="border: none !important; font-weight: 700; padding: 1px 4px 1px 0 !important; text-align: center; background: transparent !important;">:</td>
+                <td style="border: none !important; text-align: left; font-family: monospace; padding: 1px 0 !important; background: transparent !important; white-space: nowrap;">${docNumStr}</td>
               </tr>
-              <tr>
-                <td style="font-weight: 700; padding-right: 4px; text-align: left;">Tanggal Cetak</td>
-                <td style="font-weight: 700; padding-right: 4px;">:</td>
-                <td style="text-align: left;">${printDate}</td>
+              <tr style="border: none !important; background: transparent !important;">
+                <td style="border: none !important; font-weight: 700; padding: 1px 4px 1px 0 !important; text-align: left; background: transparent !important; white-space: nowrap;">Tanggal Cetak</td>
+                <td style="border: none !important; font-weight: 700; padding: 1px 4px 1px 0 !important; text-align: center; background: transparent !important;">:</td>
+                <td style="border: none !important; text-align: left; padding: 1px 0 !important; background: transparent !important; white-space: nowrap;">${printDate}</td>
               </tr>
             </table>
           </div>

@@ -1390,3 +1390,17 @@
     background: transparent !important;
   }
 }
+
+
+/* Borderless Header Metadata */
+.print-header-meta,
+.print-header-meta table,
+.print-header-meta table tr,
+.print-header-meta table td,
+.print-header-meta table th {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
