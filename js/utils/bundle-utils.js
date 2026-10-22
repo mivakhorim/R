@@ -5178,12 +5178,24 @@ window.PrintEngine = (function() {
     }, 280);
   }
 
-  function printViaHiddenIframe(htmlContent, docTitle = "") {
+  function printViaHiddenIframe(htmlContent, docTitle = "", options = {}) {
     if (window.App && window.App.showLoading) {
       window.App.showLoading(
-        "Menyiapkan Dokumen Cetak A4...",
-        "Menyusun tata letak presisi A4 tanpa footage header atau nama menu..."
+        "Menyiapkan Dokumen Cetak...",
+        "Menyusun tata letak presisi cetak tanpa footage header atau nama menu..."
       );
+    }
+
+    const isPaidUser = (typeof window !== 'undefined' && window.GoogleAuthManager && typeof window.GoogleAuthManager.isPaidMember === 'function')
+      ? window.GoogleAuthManager.isPaidMember()
+      : false;
+    let watermarkHtml = "";
+    if (!isPaidUser) {
+      watermarkHtml = `
+        <div class="free-user-watermark" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); width: 10cm; font-size: 26pt; font-weight: 900; color: #ffffff; opacity: 0.9; text-shadow: 0 0 2px rgba(15, 23, 42, 0.4), 0 0 5px rgba(15, 23, 42, 0.2); -webkit-text-stroke: 1px rgba(15, 23, 42, 0.25); text-align: center; text-transform: uppercase; letter-spacing: 3px; pointer-events: none; z-index: 999999; user-select: none;">
+          Duta Digital Agensi
+        </div>
+      `;
     }
 
     let printFrame = document.getElementById("appPrintIframe");
@@ -5224,7 +5236,41 @@ window.PrintEngine = (function() {
           .no-print, .btn, .btn-group, .page-header-actions, .d-mobile-only { display: none !important; }
           .d-desktop-only, table.d-desktop-only { display: table !important; }
           div.d-desktop-only { display: block !important; }
-          ${htmlContent.includes('proposal-page') ? `
+          @media print {
+            *, *::before, *::after {
+              overflow: visible !important;
+              max-height: none !important;
+              scrollbar-width: none !important;
+              -ms-overflow-style: none !important;
+            }
+            *::-webkit-scrollbar {
+              display: none !important;
+              width: 0 !important;
+              height: 0 !important;
+            }
+          }
+          ${(htmlContent.includes('matrix-schedule-table') || htmlContent.includes('timeScheduleMatrixContainer') || options.pageSize === 'A3') ? `
+          @page {
+            size: A3 landscape;
+            margin: 20mm !important;
+            @top-left { content: none !important; }
+            @top-center { content: none !important; }
+            @top-right { content: none !important; }
+            @bottom-left { content: none !important; }
+            @bottom-center { content: none !important; }
+            @bottom-right { content: none !important; }
+          }
+          body {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          .matrix-schedule-table {
+            width: 100% !important;
+            table-layout: auto !important;
+          }
+          ` : htmlContent.includes('proposal-page') ? `
                     @page {
             size: A4 portrait;
             margin-top: 1.0cm !important;
@@ -5544,6 +5590,7 @@ window.PrintEngine = (function() {
         </style>
       </head>
       <body>
+        ${watermarkHtml}
         ${htmlContent}
       </body>
       </html>
@@ -5619,42 +5666,60 @@ window.PrintEngine = (function() {
             ${logoHtml}
             <div class="print-header-logo-text">
               <span class="company-brand">${contractorStr}</span>
-              <span class="company-sub">Sistem Informasi Perencanaan, Estimasi Biaya &amp; Manajemen Konstruksi</span>
+              <span class="company-sub">${proj.companyMotto || proj.motto || "Sistem Informasi Perencanaan, Estimasi Biaya &amp; Manajemen Konstruksi"}</span>
             </div>
           </div>
           <div class="print-header-meta">
-            <div><strong>No. Dokumen:</strong> ${docNumStr}</div>
-            <div><strong>Tanggal Cetak:</strong> ${printDate}</div>
+            <table style="border-collapse: collapse; margin-left: auto; font-size: 8.5pt; color: #334155;">
+              <tr>
+                <td style="font-weight: 700; padding-right: 6px; text-align: left;">No. Dokumen</td>
+                <td style="font-weight: 700; padding-right: 6px;">:</td>
+                <td style="text-align: left; font-family: monospace;">${docNumStr}</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; padding-right: 6px; text-align: left;">Tanggal Cetak</td>
+                <td style="font-weight: 700; padding-right: 6px;">:</td>
+                <td style="text-align: left;">${printDate}</td>
+              </tr>
+            </table>
           </div>
         </div>
         <div class="print-doc-title-box">
           <h3 class="print-doc-title">${docType}</h3>
           <div class="print-doc-subtitle">Berdasarkan Standar ${proj.dataSource || 'SE Direktur Jenderal Bina Konstruksi No. 47/SE/Dk/2026'}</div>
         </div>
-        <table class="print-header-project-table">
+        <table class="print-header-project-table" style="width: 100%; border-collapse: collapse;">
           <tbody>
             <tr>
-              <td style="width: 16%;"><strong>Nama Pekerjaan:</strong></td>
-              <td style="width: 38%; font-weight: 700; color: #0f172a;">${projName}</td>
-              <td style="width: 18%;"><strong>Waktu Pelaksanaan:</strong></td>
-              <td style="width: 28%; font-weight: 700; color: #1e40af;">${durDays} Hari Kalender (${durWeeks} Minggu)</td>
+              <td style="width: 14%; font-weight: 700;">Nama Pekerjaan</td>
+              <td style="width: 2%; font-weight: 700; text-align: center;">:</td>
+              <td style="width: 34%; font-weight: 700; color: #0f172a;">${projName}</td>
+              <td style="width: 16%; font-weight: 700;">Waktu Pelaksanaan</td>
+              <td style="width: 2%; font-weight: 700; text-align: center;">:</td>
+              <td style="width: 32%; font-weight: 700; color: #1e40af;">${durDays} Hari Kalender (${durWeeks} Minggu)</td>
             </tr>
             <tr>
-              <td><strong>Lokasi Proyek:</strong></td>
+              <td style="font-weight: 700;">Lokasi Proyek</td>
+              <td style="font-weight: 700; text-align: center;">:</td>
               <td>${projLoc}</td>
-              <td><strong>Target Jadwal:</strong></td>
+              <td style="font-weight: 700;">Target Jadwal</td>
+              <td style="font-weight: 700; text-align: center;">:</td>
               <td>${startStr} s.d. ${finishStr}</td>
             </tr>
             <tr>
-              <td><strong>Pemilik / Tugas:</strong></td>
+              <td style="font-weight: 700;">Pemilik / Tugas</td>
+              <td style="font-weight: 700; text-align: center;">:</td>
               <td>${projOwner}</td>
-              <td><strong>Kebutuhan Tenaga:</strong></td>
+              <td style="font-weight: 700;">Kebutuhan Tenaga</td>
+              <td style="font-weight: 700; text-align: center;">:</td>
               <td style="font-weight: 700; color: #059669;">${laborInfoStr}</td>
             </tr>
             <tr>
-              <td><strong>Konsultan:</strong></td>
+              <td style="font-weight: 700;">Konsultan</td>
+              <td style="font-weight: 700; text-align: center;">:</td>
               <td>${proj.consultant || "Tim Perencana & Manajemen Konstruksi"}</td>
-              <td><strong>Wilayah Acuan:</strong></td>
+              <td style="font-weight: 700;">Wilayah Acuan</td>
+              <td style="font-weight: 700; text-align: center;">:</td>
               <td>${regionStr}</td>
             </tr>
           </tbody>
@@ -5708,16 +5773,26 @@ window.PrintEngine = (function() {
             ${landLogoHtml}
             <div>
               <div style="font-size: 9.5pt; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.3px;">${contractorStr}</div>
-              <div style="font-size: 7pt; color: #475569;">Estimasi Biaya &amp; Manajemen Konstruksi</div>
+              <div style="font-size: 7pt; color: #475569;">${proj.companyMotto || proj.motto || "Estimasi Biaya &amp; Manajemen Konstruksi"}</div>
             </div>
           </div>
           <div style="width: 37%; text-align: center; line-height: 1.2;">
             <div style="font-size: 11pt; font-weight: 900; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px;">${docType}</div>
             <div style="font-size: 7pt; color: #475569;">Standar ${proj.dataSource || 'SE Dirjen Bina Konstruksi No. 47/SE/Dk/2026'}</div>
           </div>
-          <div style="width: 28%; text-align: right; font-size: 7.5pt; color: #334155; line-height: 1.25;">
-            <div><strong>No. Dok:</strong> ${docNumStr}</div>
-            <div><strong>Tgl Cetak:</strong> ${printDate}</div>
+          <div style="width: 28%; text-align: right; font-size: 7.5pt; color: #334155;">
+            <table style="border-collapse: collapse; margin-left: auto; font-size: 7.5pt; color: #334155;">
+              <tr>
+                <td style="font-weight: 700; padding-right: 4px; text-align: left;">No. Dokumen</td>
+                <td style="font-weight: 700; padding-right: 4px;">:</td>
+                <td style="text-align: left; font-family: monospace;">${docNumStr}</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700; padding-right: 4px; text-align: left;">Tanggal Cetak</td>
+                <td style="font-weight: 700; padding-right: 4px;">:</td>
+                <td style="text-align: left;">${printDate}</td>
+              </tr>
+            </table>
           </div>
         </div>
         <table style="width: 100%; border-collapse: collapse; font-size: 7.5pt; background: transparent; border: none; border-bottom: 1px solid #e2e8f0;">
