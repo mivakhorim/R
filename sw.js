@@ -7,6 +7,7 @@ const STATIC_ASSETS = [
   './js/app.js',
   './js/bundle-modules.js',
   './js/bundle-utils.js',
+  './js/data/master-materials.js',
   './assets/logo.webp',
   './assets/google-logo.webp',
   './favicon.ico',
