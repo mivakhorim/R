@@ -186,7 +186,7 @@
   <td>OH</td>
   <td class="text-right font-mono comp-koef">0,0667</td>
   <td class="col-currency font-mono"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">145.000</span></div></td>
-  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">9.671,50</span></div></td>
+  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">9.672</span></div></td>
 </tr>
 <tr data-section="tenaga" data-koef="0.0067" data-price="175000">
   <td class="text-right">3</td>
@@ -195,7 +195,7 @@
   <td>OH</td>
   <td class="text-right font-mono comp-koef">0,0067</td>
   <td class="col-currency font-mono"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">175.000</span></div></td>
-  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">1.172,50</span></div></td>
+  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">1.173</span></div></td>
 </tr>
 <tr data-section="tenaga" data-koef="0.0022" data-price="200000">
   <td class="text-right">4</td>
@@ -405,8 +405,8 @@
   <script src="../assets/social-links.js" defer></script>
 
   <script>
-    var baseHsp = 171614.0;
-    var baseTenaga = 24614.0;
+    var baseHsp = 171614;
+    var baseTenaga = 24614;
     var baseBahan = 147000;
     var baseAlat = 0;
 
@@ -434,20 +434,20 @@
       rows.forEach(function(row) {
         var koef = parseFloat(row.getAttribute("data-koef")) || 0;
         var price = parseFloat(row.getAttribute("data-price")) || 0;
-        var tot = (koef * v) * price;
+        var tot = Math.ceil((koef * v) * price);
         var koefCell = row.querySelector(".comp-koef");
         var totalCell = row.querySelector(".comp-total");
         if (koefCell) koefCell.textContent = formatKoefVal(koef * v);
         if (totalCell) setCurrCell(totalCell, tot);
       });
 
-      setCurrCell(document.getElementById("subtotalTenaga"), baseTenaga * v);
-      setCurrCell(document.getElementById("subtotalBahan"), baseBahan * v);
-      setCurrCell(document.getElementById("subtotalAlat"), baseAlat * v);
-      setCurrCell(document.getElementById("grandTotalHsp"), baseHsp * v);
+      setCurrCell(document.getElementById("subtotalTenaga"), Math.ceil(baseTenaga * v));
+      setCurrCell(document.getElementById("subtotalBahan"), Math.ceil(baseBahan * v));
+      setCurrCell(document.getElementById("subtotalAlat"), Math.ceil(baseAlat * v));
+      setCurrCell(document.getElementById("grandTotalHsp"), Math.ceil(baseHsp * v));
 
       var elSim = document.getElementById("simTotalBiaya");
-      if (elSim) elSim.textContent = "Rp " + formatRupiahVal(baseHsp * v);
+      if (elSim) elSim.textContent = "Rp " + formatRupiahVal(Math.ceil(baseHsp * v));
     }
 
     function openQrisModal() {

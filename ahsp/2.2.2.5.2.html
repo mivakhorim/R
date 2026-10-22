@@ -177,7 +177,7 @@
   <td>OJ</td>
   <td class="text-right font-mono comp-koef">0,1033</td>
   <td class="col-currency font-mono"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">12.500</span></div></td>
-  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">1.291,25</span></div></td>
+  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">1.292</span></div></td>
 </tr>
 <tr data-section="tenaga" data-koef="0.0516" data-price="18125">
   <td class="text-right">2</td>
@@ -186,7 +186,7 @@
   <td>OJ</td>
   <td class="text-right font-mono comp-koef">0,0516</td>
   <td class="col-currency font-mono"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">18.125</span></div></td>
-  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">935,25</span></div></td>
+  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">936</span></div></td>
 </tr>
 <tr data-section="tenaga" data-koef="0.0203" data-price="25000">
   <td class="text-right">3</td>
@@ -195,7 +195,7 @@
   <td>OJ</td>
   <td class="text-right font-mono comp-koef">0,0203</td>
   <td class="col-currency font-mono"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">25.000</span></div></td>
-  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">507,50</span></div></td>
+  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">508</span></div></td>
 </tr>
 <tr class="subtotal-row"><td colspan="6" class="text-right text-bold">Subtotal Tenaga Kerja:</td><td class="col-currency font-mono text-bold" id="subtotalTenaga"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">2.734</span></div></td></tr>
 <tr class="category-header-row"><td colspan="7">C. PERALATAN</td></tr>
@@ -215,9 +215,9 @@
   <td>jam</td>
   <td class="text-right font-mono comp-koef">0,0516</td>
   <td class="col-currency font-mono"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">487.000</span></div></td>
-  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">25.129,20</span></div></td>
+  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">25.130</span></div></td>
 </tr>
-<tr class="subtotal-row"><td colspan="6" class="text-right text-bold">Subtotal Peralatan:</td><td class="col-currency font-mono text-bold" id="subtotalAlat"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">50.929,20</span></div></td></tr>
+<tr class="subtotal-row"><td colspan="6" class="text-right text-bold">Subtotal Peralatan:</td><td class="col-currency font-mono text-bold" id="subtotalAlat"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">50.930</span></div></td></tr>
 <tr class="grand-total-row"><td colspan="6" class="text-right text-bold font-bold">Total Harga Satuan Pokok (HSP per m&#x27;):</td><td class="col-currency font-mono text-bold font-bold text-right" id="grandTotalHsp"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">53.663</span></div></td></tr>
           </tbody>
         </table>
@@ -396,10 +396,10 @@
   <script src="../assets/social-links.js" defer></script>
 
   <script>
-    var baseHsp = 53663.0;
-    var baseTenaga = 2734.0;
+    var baseHsp = 53663;
+    var baseTenaga = 2734;
     var baseBahan = 0;
-    var baseAlat = 50929.2;
+    var baseAlat = 50930;
 
     function formatRupiahVal(num) {
       return Math.round(num).toLocaleString("id-ID");
@@ -425,20 +425,20 @@
       rows.forEach(function(row) {
         var koef = parseFloat(row.getAttribute("data-koef")) || 0;
         var price = parseFloat(row.getAttribute("data-price")) || 0;
-        var tot = (koef * v) * price;
+        var tot = Math.ceil((koef * v) * price);
         var koefCell = row.querySelector(".comp-koef");
         var totalCell = row.querySelector(".comp-total");
         if (koefCell) koefCell.textContent = formatKoefVal(koef * v);
         if (totalCell) setCurrCell(totalCell, tot);
       });
 
-      setCurrCell(document.getElementById("subtotalTenaga"), baseTenaga * v);
-      setCurrCell(document.getElementById("subtotalBahan"), baseBahan * v);
-      setCurrCell(document.getElementById("subtotalAlat"), baseAlat * v);
-      setCurrCell(document.getElementById("grandTotalHsp"), baseHsp * v);
+      setCurrCell(document.getElementById("subtotalTenaga"), Math.ceil(baseTenaga * v));
+      setCurrCell(document.getElementById("subtotalBahan"), Math.ceil(baseBahan * v));
+      setCurrCell(document.getElementById("subtotalAlat"), Math.ceil(baseAlat * v));
+      setCurrCell(document.getElementById("grandTotalHsp"), Math.ceil(baseHsp * v));
 
       var elSim = document.getElementById("simTotalBiaya");
-      if (elSim) elSim.textContent = "Rp " + formatRupiahVal(baseHsp * v);
+      if (elSim) elSim.textContent = "Rp " + formatRupiahVal(Math.ceil(baseHsp * v));
     }
 
     function openQrisModal() {

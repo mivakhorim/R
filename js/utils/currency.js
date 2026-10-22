@@ -25,10 +25,11 @@ window.CurrencyUtil = (function() {
     return parts[0];
   }
 
-  // Format Rupiah tanpa pemisahan baris: Rp 1.500.000
+  // Format Rupiah tanpa pemisahan baris: Rp 1.500.000 (Pembulatan ke atas tanpa koma)
   function formatRupiah(val, withDecimals = false, asHtml = false) {
-    const num = cleanNumber(val);
-    const formatted = formatNumber(num, withDecimals ? 2 : 0);
+    const num = Math.ceil(cleanNumber(val));
+    const fixed = num.toFixed(0);
+    const formatted = fixed.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     const str = `Rp\u00A0${formatted}`; // Non-breaking space \u00A0
     if (asHtml) {
       return `<span class="rupiah-nowrap">${str}</span>`;
@@ -80,7 +81,7 @@ window.CurrencyUtil = (function() {
       return '';
     }
 
-    const n = Math.round(cleanNumber(val));
+    const n = Math.ceil(cleanNumber(val));
     if (n === 0) return 'Nol Rupiah';
     const result = convert(n).replace(/\s+/g, ' ').trim();
     return `${result} Rupiah`;

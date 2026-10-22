@@ -177,7 +177,7 @@
   <td>m²</td>
   <td class="text-right font-mono comp-koef">1,0476</td>
   <td class="col-currency font-mono"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">12.000</span></div></td>
-  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">12.571,20</span></div></td>
+  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">12.572</span></div></td>
 </tr>
 <tr data-section="tenaga" data-koef="1.0476" data-price="2900">
   <td class="text-right">2</td>
@@ -186,9 +186,9 @@
   <td>m²</td>
   <td class="text-right font-mono comp-koef">1,0476</td>
   <td class="col-currency font-mono"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">2.900</span></div></td>
-  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">3.038,04</span></div></td>
+  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">3.039</span></div></td>
 </tr>
-<tr class="subtotal-row"><td colspan="6" class="text-right text-bold">Subtotal Tenaga Kerja:</td><td class="col-currency font-mono text-bold" id="subtotalTenaga"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">15.609,24</span></div></td></tr>
+<tr class="subtotal-row"><td colspan="6" class="text-right text-bold">Subtotal Tenaga Kerja:</td><td class="col-currency font-mono text-bold" id="subtotalTenaga"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">15.610</span></div></td></tr>
 <tr class="category-header-row"><td colspan="7">B. BAHAN / MATERIAL</td></tr>
 <tr data-section="bahan" data-koef="0.2048" data-price="496300">
   <td class="text-right">1</td>
@@ -197,7 +197,7 @@
   <td>m³</td>
   <td class="text-right font-mono comp-koef">0,2048</td>
   <td class="col-currency font-mono"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">496.300</span></div></td>
-  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">101.642,24</span></div></td>
+  <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">101.643</span></div></td>
 </tr>
 <tr data-section="bahan" data-koef="1.0476" data-price="1000000">
   <td class="text-right">2</td>
@@ -208,7 +208,7 @@
   <td class="col-currency font-mono"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">1.000.000</span></div></td>
   <td class="col-currency font-mono comp-total"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">1.047.600</span></div></td>
 </tr>
-<tr class="subtotal-row"><td colspan="6" class="text-right text-bold font-bold">Subtotal Bahan / Material:</td><td class="col-currency font-mono text-bold font-bold text-right" id="subtotalBahan"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">1.149.242,24</span></div></td></tr>
+<tr class="subtotal-row"><td colspan="6" class="text-right text-bold font-bold">Subtotal Bahan / Material:</td><td class="col-currency font-mono text-bold font-bold text-right" id="subtotalBahan"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">1.149.243</span></div></td></tr>
 <tr class="grand-total-row"><td colspan="6" class="text-right text-bold font-bold">Total Harga Satuan Pokok (HSP per m²):</td><td class="col-currency font-mono text-bold font-bold text-right" id="grandTotalHsp"><div class="curr-cell"><span class="curr-symbol">Rp</span><span class="curr-val">1.164.851</span></div></td></tr>
           </tbody>
         </table>
@@ -387,9 +387,9 @@
   <script src="../assets/social-links.js" defer></script>
 
   <script>
-    var baseHsp = 1164851.0;
-    var baseTenaga = 15609.240000000002;
-    var baseBahan = 1149242.24;
+    var baseHsp = 1164851;
+    var baseTenaga = 15610;
+    var baseBahan = 1149243;
     var baseAlat = 0;
 
     function formatRupiahVal(num) {
@@ -416,20 +416,20 @@
       rows.forEach(function(row) {
         var koef = parseFloat(row.getAttribute("data-koef")) || 0;
         var price = parseFloat(row.getAttribute("data-price")) || 0;
-        var tot = (koef * v) * price;
+        var tot = Math.ceil((koef * v) * price);
         var koefCell = row.querySelector(".comp-koef");
         var totalCell = row.querySelector(".comp-total");
         if (koefCell) koefCell.textContent = formatKoefVal(koef * v);
         if (totalCell) setCurrCell(totalCell, tot);
       });
 
-      setCurrCell(document.getElementById("subtotalTenaga"), baseTenaga * v);
-      setCurrCell(document.getElementById("subtotalBahan"), baseBahan * v);
-      setCurrCell(document.getElementById("subtotalAlat"), baseAlat * v);
-      setCurrCell(document.getElementById("grandTotalHsp"), baseHsp * v);
+      setCurrCell(document.getElementById("subtotalTenaga"), Math.ceil(baseTenaga * v));
+      setCurrCell(document.getElementById("subtotalBahan"), Math.ceil(baseBahan * v));
+      setCurrCell(document.getElementById("subtotalAlat"), Math.ceil(baseAlat * v));
+      setCurrCell(document.getElementById("grandTotalHsp"), Math.ceil(baseHsp * v));
 
       var elSim = document.getElementById("simTotalBiaya");
-      if (elSim) elSim.textContent = "Rp " + formatRupiahVal(baseHsp * v);
+      if (elSim) elSim.textContent = "Rp " + formatRupiahVal(Math.ceil(baseHsp * v));
     }
 
     function openQrisModal() {
