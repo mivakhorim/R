@@ -16,8 +16,8 @@
   <meta property="og:site_name" content="Duta RAB S1">
   <meta property="og:locale" content="id_ID">
   <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:image" content="https://rab.dutamik.id/assets/logo.webp">
-  <meta property="og:image:secure_url" content="https://rab.dutamik.id/assets/logo.webp">
+  <meta property="og:image" content="https://rab.dutamik.id/assets/logo-og.webp">
+  <meta property="og:image:secure_url" content="https://rab.dutamik.id/assets/logo-og.webp">
   <meta property="og:image:type" content="image/webp">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
@@ -25,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aplikasi Rencana Anggaran Biaya (RAB) Konstruksi - Duta RAB S1">
   <meta name="twitter:description" content="Platform estimasi anggaran biaya konstruksi terlengkap sesuai SE Bina Konstruksi PUPR No. 47/2026. Analisis AHSP, volume, kurva S, dan penagihan termin BAP.">
-  <meta name="twitter:image" content="https://rab.dutamik.id/assets/logo.webp">
+  <meta name="twitter:image" content="https://rab.dutamik.id/assets/logo-og.webp">
   <meta name="twitter:image:alt" content="Logo Aplikasi Duta RAB S1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/webp" sizes="32x32" href="assets/favicon.webp">
@@ -706,7 +706,7 @@
 
     
   <div id="memberModal" class="modal-backdrop" onclick="if(event.target===this) closeMemberModal()">
-    <div class="modal-dialog" style="max-width: 680px; width: min(680px, calc(100vw - 24px)); border-radius: 12px; overflow: hidden; background: #ffffff;">
+    <div id="memberModalDialog" class="modal-dialog" style="max-width: 430px; width: min(430px, calc(100vw - 24px)); border-radius: 12px; overflow: hidden; background: #ffffff; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.05); transition: max-width 0.2s ease;">
       <div class="modal-header" style="padding: 14px 18px; border-bottom: 1px solid #e2e8f0; background: #ffffff; display: flex; align-items: center; justify-content: space-between;">
         <div style="display: flex; align-items: center; gap: 8px;">
           <img src="assets/logo.webp" alt="Duta RAB S1" style="height: 24px; width: auto; object-fit: contain;">
@@ -715,36 +715,49 @@
         <button type="button" class="modal-close-btn" onclick="closeMemberModal()" aria-label="Tutup Modal Member" style="background: transparent; border: none; font-size: 20px; color: #64748b; cursor: pointer; line-height: 1;">&times;</button>
       </div>
 
-      <div class="modal-body" id="memberModalBodyGuest" style="padding: 16px 20px; display: flex; flex-direction: column; gap: 14px;">
+      <div class="modal-body" id="memberModalBodyGuest" style="padding: 18px 20px; display: flex; flex-direction: column; gap: 14px;">
         <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 14px 16px; border-radius: 8px;">
-          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px;">
-            <div>
-              <span style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px;">Promo Lisensi Berbayar</span>
-              <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 4px; flex-wrap: nowrap;">
-                <span style="font-size: 22px; font-weight: 800; color: #0a2e5c; font-family: var(--font-mono); white-space: nowrap;">Rp 350.000</span>
-                <del style="font-size: 12px; color: #94a3b8; font-weight: 600; white-space: nowrap;">Rp 700.000</del>
-                <span style="font-size: 10px; background-color: #dcfce7; color: #15803d; font-weight: 800; border: 1px solid #86efac; padding: 1px 6px; border-radius: 4px; white-space: nowrap;">HEMAT 50%</span>
-              </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; color: #0a2e5c; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px;">Promo Lisensi Resmi</span>
+            <span style="font-size: 10px; background-color: #dcfce7; color: #15803d; font-weight: 800; border: 1px solid #86efac; padding: 2px 7px; border-radius: 4px;">HEMAT 50%</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px;">
+            <span style="font-size: 24px; font-weight: 800; color: #0a2e5c; font-family: var(--font-mono); line-height: 1;">Rp 350.000</span>
+            <del style="font-size: 13px; color: #94a3b8; font-weight: 600;">Rp 700.000</del>
+            <span style="font-size: 11px; color: #64748b; font-weight: 500;">/ permanen</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; color: #334155; line-height: 1.4;">
+            <div style="display: flex; align-items: center; gap: 7px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Akses Penuh 2.579 AHSP PUPR 2026</span>
             </div>
-            <span style="font-size: 11px; color: #475569; font-weight: 700; white-space: nowrap;">Lisensi Berbayar</span>
+            <div style="display: flex; align-items: center; gap: 7px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Ekspor Proposal RAB &amp; BAP Termin A4</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 7px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Analisis Volume, Jadwal Kalender &amp; Kurva S</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 7px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Cadangan Cloud Otomatis Google Drive</span>
+            </div>
           </div>
-          <div style="font-size: 12px; color: #475569; margin-top: 8px; line-height: 1.45;">
-            Akses tak terbatas seluruh 2.579 AHSP PUPR 2026, ekspor dokumen lengkap A4, analisis volume, kurva S, jadwal kalender, dan sinkronisasi Google Drive.
-          </div>
-          <div style="font-size: 10.5px; color: #64748b; margin-top: 6px; line-height: 1.4;">
-            Pelajari selengkapnya mengenai ketentuan hak akses, syarat penggunaan, dan kebijakan lisensi aplikasi. <a href="disclaimer.html#lisensi-offline" target="_blank" style="color: #0a2e5c; text-decoration: underline;">Pelajari Ketentuan Lisensi Selengkapnya</a>
+          <div style="font-size: 10.5px; color: #64748b; margin-top: 10px; padding-top: 8px; border-top: 1px solid #e2e8f0; line-height: 1.4;">
+            Pelajari hak akses dan kebijakan lisensi: <a href="disclaimer.html#lisensi-offline" target="_blank" style="color: #0a2e5c; text-decoration: underline; font-weight: 600;">Ketentuan Lisensi</a>
           </div>
         </div>
 
-        <div id="googleSignInContainer" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 8px 0;">
+        <div id="googleSignInContainer" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 4px 0 0 0;">
           <div id="gisButtonSlot" style="display: none;"></div>
-          <button type="button" class="btn-google-auth-modern" onclick="GoogleAuthManager.loginWithGoogle()" id="btnGoogleAuth" aria-label="Masuk Menggunakan Akun Google">
+          <button type="button" class="btn-google-auth-modern" onclick="GoogleAuthManager.loginWithGoogle()" id="btnGoogleAuth" aria-label="Masuk Menggunakan Akun Google" style="width: 100%; max-width: 100%; height: 46px;">
             <img src="assets/google-logo.webp" alt="Google" class="google-auth-icon-webp" width="22" height="22">
             <span class="google-auth-label">Masuk Menggunakan Akun Google</span>
           </button>
         </div>
 
-        <div style="font-size: 11.5px; color: #64748b; text-align: center; line-height: 1.4;">
+        <div style="font-size: 11px; color: #64748b; text-align: center; line-height: 1.4;">
           Masuk dengan Akun Google untuk sinkronisasi otomatis cadangan data ke Google Drive dan verifikasi lisensi resmi dalam 1 langkah.
         </div>
       </div>
@@ -1160,6 +1173,11 @@
         if (typeof window.dismissAppPreloader === "function") window.dismissAppPreloader();
       }, 350);
     });
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function() {
+        navigator.serviceWorker.register("./sw.js").catch(function() {});
+      });
+    }
     setTimeout(function() {
       if (typeof window.dismissAppPreloader === "function") window.dismissAppPreloader();
     }, 2200);
